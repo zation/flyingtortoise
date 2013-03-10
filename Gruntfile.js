@@ -1,11 +1,14 @@
 module.exports = function(grunt) {
 
   var dependencies = [
-    'components/jquery/jquery.js',
-    'components/underscore/underscore.js',
-    'components/backbone/backbone.js'],
+      'components/jquery/jquery.js',
+      'components/underscore/underscore.js',
+      'components/backbone/backbone.js',
+      'components/backbone.localStorage/backbone.localStorage.js'],
 
     sources = 'app/js/**/*.js',
+
+    sasses = 'sass',
 
     specs = 'spec/*Spec.js';
 
@@ -47,7 +50,7 @@ module.exports = function(grunt) {
     compass: {
       development: {
         options: {
-          sassDir: 'sass',
+          sassDir: sasses,
           cssDir: 'app/css'
         }
       }
@@ -59,7 +62,7 @@ module.exports = function(grunt) {
         tasks: ['jasmine:test:build']
       },
       css: {
-        files: 'sass/**/*',
+        files: sasses + '/**/*',
         tasks: 'compass:development'
       }
     }

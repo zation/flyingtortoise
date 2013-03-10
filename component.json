@@ -4,6 +4,7 @@
   "dependencies": {
     "jquery": "latest",
     "underscore": "latest",
-    "backbone": "latest"
+    "backbone": "latest",
+    "backbone.localStorage": "latest"
   }
 }
