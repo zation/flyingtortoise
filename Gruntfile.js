@@ -5,18 +5,27 @@ module.exports = function(grunt) {
       'components/underscore/underscore.js',
       'components/backbone/backbone.js',
       'components/backbone.localStorage/backbone.localStorage.js'],
-
+    devDependencies = [
+      'components/jasmine-jquery/lib/jasmine-jquery.js',
+      'components/jasmine-ajax/lib/mock-ajax.js'],
     sources = 'app/js/**/*.js',
-
     sasses = 'sass',
-
-    specs = 'spec/*Spec.js';
+    templates = 'app/template/**/_*.html',
+    specs = 'spec/**/*Spec.js';
 
   grunt.initConfig({
     concat: {
-      development: {
+      js: {
         src: dependencies,
         dest: 'app/js/lib.js'
+      },
+      spec: {
+        src: devDependencies,
+        dest: 'spec/helper/lib.js'
+      },
+      template: {
+        src: templates,
+        dest: 'app/template/main.html'
       }
     },
 
@@ -42,6 +51,7 @@ module.exports = function(grunt) {
         src: sources,
         options: {
           specs: specs,
+          helpers: ['spec/helper/lib.js', 'spec/helper/**/*.js'],
           vendor: 'app/js/lib.js'
         }
       }
@@ -64,6 +74,10 @@ module.exports = function(grunt) {
       css: {
         files: sasses + '/**/*',
         tasks: 'compass:development'
+      },
+      template: {
+        files: templates,
+        tasks: 'concat:template'
       }
     }
   });

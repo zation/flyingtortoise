@@ -1,1 +1,5 @@
-234
+$(function() {
+  new AppView({
+    el: $('.app')
+  });
+});
