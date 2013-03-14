@@ -6,7 +6,18 @@
 <body class="app">
 
   <script src="js/lib.js"></script>
-  <script src="js/view/AppView.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/Manager.js"></script>
+  <script src="js/model/Task.js"></script>
+  <script src="js/collection/Tasks.js"></script>
+  <script src="js/view/Main.js"></script>
+  <script src="js/view/AddTask.js"></script>
+  <script src="js/view/TaskList.js"></script>
+  <script src="js/view/TaskSummary.js"></script>
+  <script src="js/view/Home.js"></script>
+  <script>
+    $(function() {
+      new app.Manager();
+    });
+  </script>
 </body>
 </html>

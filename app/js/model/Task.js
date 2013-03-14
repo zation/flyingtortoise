@@ -1,0 +1,1 @@
+app.model.Task = Backbone.Model.extend();

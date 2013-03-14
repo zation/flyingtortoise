@@ -62,8 +62,3 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
-
-/* line 4, ../../sass/screen.scss */
-body {
-  background: black;
-}
