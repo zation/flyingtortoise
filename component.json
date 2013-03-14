@@ -7,6 +7,7 @@
     "backbone": "latest",
     "backbone.localStorage": "latest",
     "jasmine-jquery": "latest",
-    "jasmine-ajax": "git@github.com:pivotal/jasmine-ajax.git"
+    "jasmine-ajax": "git@github.com:pivotal/jasmine-ajax.git",
+    "moment": "latest"
   }
 }

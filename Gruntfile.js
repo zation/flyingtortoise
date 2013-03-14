@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
   var dependencies = [
       'components/jquery/jquery.js',
+      'components/moment/moment.js',
       'components/underscore/underscore.js',
       'components/backbone/backbone.js',
       'components/backbone.localStorage/backbone.localStorage.js'],
