@@ -5,7 +5,8 @@ module.exports = function(grunt) {
       'components/moment/moment.js',
       'components/underscore/underscore.js',
       'components/backbone/backbone.js',
-      'components/backbone.localStorage/backbone.localStorage.js'],
+      'components/backbone.localStorage/backbone.localStorage.js',
+      'components/highcharts.com/js/highcharts.src.js'],
     devDependencies = [
       'components/jasmine-jquery/lib/jasmine-jquery.js',
       'components/jasmine-ajax/lib/mock-ajax.js'],

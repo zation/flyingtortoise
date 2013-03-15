@@ -8,6 +8,7 @@
     "backbone.localStorage": "latest",
     "jasmine-jquery": "latest",
     "jasmine-ajax": "git@github.com:pivotal/jasmine-ajax.git",
-    "moment": "latest"
+    "moment": "latest",
+    "highcharts.com": "latest"
   }
 }
