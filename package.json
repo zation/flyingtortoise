@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "flyingtortoise ==============",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt jasmine:test"
   },
   "repository": {
     "type": "git",
