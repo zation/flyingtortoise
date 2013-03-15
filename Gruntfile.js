@@ -49,7 +49,7 @@ module.exports = function(grunt) {
 
     jasmine: {
       test: {
-        src: sources,
+        src: ['app/js/Manager.js', 'app/js/model/Task.js', sources],
         options: {
           specs: specs,
           helpers: ['spec/helper/lib.js', 'spec/helper/**/*.js'],
