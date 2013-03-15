@@ -90,5 +90,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
 
-  grunt.registerTask('test', ['concat:js', 'concat:spec', 'concat:template', 'jasmine:test']);
+  grunt.registerTask('test', ['concat:js',
+    'concat:spec',
+    'concat:template',
+    'compass:development',
+    'jasmine:test']);
 };
