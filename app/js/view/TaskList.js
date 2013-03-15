@@ -1,4 +1,6 @@
 app.view.TaskList = Backbone.View.extend({
+  tagName: 'ul',
+  className: 'task-list',
   render: function() {
     var taskListView = this;
     this.collection.each(function(task) {
