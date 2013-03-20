@@ -7,6 +7,7 @@
 
   app.view.AddTask = Backbone.View.extend({
     className: 'add-task-container',
+    tagName: 'li',
     events: {
       'click .add-task': 'addTask'
     },

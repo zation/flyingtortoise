@@ -3,6 +3,7 @@ app.view.TaskList = Backbone.View.extend({
   className: 'task-list',
   render: function() {
     var taskListView = this;
+    taskListView.$el.append(this.addTaskView.$el);
     this.collection.each(function(task) {
       taskListView.addTask(task);
     });
@@ -11,9 +12,12 @@ app.view.TaskList = Backbone.View.extend({
     var taskSummaryView = new app.view.TaskSummary({
       model: task
     });
-    this.$el.append(taskSummaryView.$el);
+    this.addTaskView.$el.before(taskSummaryView.$el);
   },
   initialize: function() {
+    this.addTaskView = new app.view.AddTask({
+      collection: this.collection
+    });
     this.render();
     this.collection.on('add', this.addTask, this);
   }
