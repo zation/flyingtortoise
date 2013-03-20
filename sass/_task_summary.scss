@@ -1,0 +1,49 @@
+.task-summary:nth-child(1) {
+  .start {
+    background: $task-color-1;
+  }
+  .task-name {
+    color: $task-color-1;
+  }
+}
+
+.task-summary:nth-child(2) {
+  .start {
+    background: $task-color-2;
+  }
+  .task-name {
+    color: $task-color-2;
+  }
+}
+
+.task-summary:nth-child(3) {
+  .start {
+    background: $task-color-3;
+  }
+  .task-name {
+    color: $task-color-3;
+  }
+}
+
+.task-summary:nth-child(4) {
+  .start {
+    background: $task-color-4;
+  }
+  .task-name {
+    color: $task-color-4;
+  }
+}
+
+.start {
+  margin: 10px auto;
+  display: block;
+  border-radius: 100%;
+  border: 15px solid white;
+  height: $task-radius-length;
+  width: $task-radius-length;
+}
+
+.task-name {
+  font-size: 24px;
+  font-weight: bold;
+}

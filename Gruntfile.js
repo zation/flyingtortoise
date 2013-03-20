@@ -21,25 +21,25 @@ module.exports = function(grunt) {
         src: dependencies,
         dest: 'app/js/lib.js'
       },
-      spec: {
+      test: {
         src: devDependencies,
         dest: 'spec/helper/lib.js'
       },
-      template: {
+      html: {
         src: templates,
         dest: 'app/template/main.html'
       }
     },
 
     connect: {
-      server: {
+      dev: {
         options: {
           port: 9000,
           base: 'app/',
           keepalive: true
         }
       },
-      spec: {
+      test: {
         options: {
           port: 9001,
           base: './',
@@ -60,8 +60,9 @@ module.exports = function(grunt) {
     },
 
     compass: {
-      development: {
+      dev: {
         options: {
+          outputStyle: 'compressed',
           sassDir: sasses,
           cssDir: 'app/css'
         }
@@ -75,11 +76,11 @@ module.exports = function(grunt) {
       },
       css: {
         files: sasses + '/**/*',
-        tasks: 'compass:development'
+        tasks: 'compass:dev'
       },
-      template: {
+      html: {
         files: templates,
-        tasks: 'concat:template'
+        tasks: 'concat:html'
       }
     }
   });
