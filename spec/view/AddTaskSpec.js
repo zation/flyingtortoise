@@ -18,14 +18,35 @@ describe('AddTask View', function() {
     expect(collection.at(0).get('name')).toBe(expectedTaskName);
   });
 
-  it('should hide when there are 4 tasks', function() {
-    setFixtures(addTaskView.$el);
-    add4Tasks();
+  describe('should hide when there are 4 tasks', function() {
+    it('after add task', function() {
+      setFixtures(addTaskView.$el);
+      add4TasksToView();
 
-    expect(addTaskView.$el).toBeHidden();
+      expect(addTaskView.$el).toBeHidden();
+    });
+
+    it('after initialize', function() {
+      add4TasksToCollection();
+      addTaskView = new app.view.AddTask({
+        collection: collection
+      });
+      setFixtures(addTaskView.$el);
+
+      expect(addTaskView.$el).toBeHidden();
+    });
   });
 
-  function add4Tasks() {
+  function add4TasksToCollection() {
+    collection.add([
+      {},
+      {},
+      {},
+      {}
+    ]);
+  }
+
+  function add4TasksToView() {
     for (var i = 0; i < 4; i++) {
       addTaskView.addTask();
     }

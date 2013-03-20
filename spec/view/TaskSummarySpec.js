@@ -6,7 +6,7 @@ describe('TaskSummary View', function() {
     });
 
     expect(taskSummaryView.$el).toHaveClass('task-summary');
-    expect(taskSummaryView.$el).toHaveText(expectedName);
+    expect(taskSummaryView.$el.find('.task-name')).toHaveText(expectedName);
   });
 
   it('should start task when click start button', function() {
