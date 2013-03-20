@@ -18,6 +18,18 @@ describe('AddTask View', function() {
     expect(collection.at(0).get('name')).toBe(expectedTaskName);
   });
 
+  it('should update class name when added task', function() {
+    expect(addTaskView.$el).toHaveClass('task-order-1');
+
+    addTaskView.addTask();
+
+    expect(addTaskView.$el).toHaveClass('task-order-2');
+
+    addTaskView.addTask();
+
+    expect(addTaskView.$el).toHaveClass('task-order-3');
+  });
+
   describe('should hide when there are 4 tasks', function() {
     it('after add task', function() {
       setFixtures(addTaskView.$el);
