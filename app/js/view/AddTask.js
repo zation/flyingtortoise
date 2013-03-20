@@ -7,6 +7,9 @@ app.view.AddTask = Backbone.View.extend({
     this.collection.create({
       name: this.$el.find('.new-task-name').val()
     });
+    if (this.collection.length > 3) {
+      this.$el.hide();
+    }
   },
   render: function() {
     this.$el.html(this.template());
