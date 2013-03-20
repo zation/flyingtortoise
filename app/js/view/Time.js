@@ -1,5 +1,5 @@
-app.view.TaskDetail = Backbone.View.extend({
-  className: 'task-detail',
+app.view.Time = Backbone.View.extend({
+  className: 'time',
   events: {
     'click .stop': 'stopTask'
   },
@@ -12,7 +12,7 @@ app.view.TaskDetail = Backbone.View.extend({
     this.$el.append(this.template(this.model.attributes));
   },
   initialize: function() {
-    this.template = _.template($('#task_detail').html());
+    this.template = _.template($('#time').html());
     this.render();
   }
 });

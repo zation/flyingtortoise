@@ -9,7 +9,7 @@ app.view.TaskList = Backbone.View.extend({
     });
   },
   addTask: function(task) {
-    var taskSummaryView = new app.view.TaskSummary({
+    var taskSummaryView = new app.view.Task({
       model: task
     });
     this.addTaskView.$el.before(taskSummaryView.$el);

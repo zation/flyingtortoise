@@ -6,7 +6,7 @@ describe('TaskList View', function() {
     });
 
     expect(taskListView.$el).toContain('.add-task-container');
-    expect(taskListView.$el.find('.task-summary').length).toBe(2);
+    expect(taskListView.$el.find('.task').length).toBe(2);
   });
 
   it('should re-render when collection is changed', function() {
@@ -17,6 +17,6 @@ describe('TaskList View', function() {
     collection.create({});
     collection.create({});
 
-    expect(taskListView.$el.find('.task-summary').length).toBe(2);
+    expect(taskListView.$el.find('.task').length).toBe(2);
   });
 });

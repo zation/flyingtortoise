@@ -9,12 +9,12 @@
     LOGO
   </header>
 </script>
-<script type="text/template" id="task_detail">
+<script type="text/template" id="task">
+  <button class="start"></button>
+  <span class="task-name"><%= name %></span>
+</script>
+<script type="text/template" id="time">
   <span class="task-name"><%= name %></span>
   <time></time>
   <button class="stop">Stop</button>
-</script>
-<script type="text/template" id="task_summary">
-  <button class="start"></button>
-  <span class="task-name"><%= name %></span>
 </script>
