@@ -1,4 +1,4 @@
-.task-summary:nth-child(1) {
+.task:nth-child(1) {
   .start {
     background: $task-color-1;
   }
@@ -7,7 +7,7 @@
   }
 }
 
-.task-summary:nth-child(2) {
+.task:nth-child(2) {
   .start {
     background: $task-color-2;
   }
@@ -16,7 +16,7 @@
   }
 }
 
-.task-summary:nth-child(3) {
+.task:nth-child(3) {
   .start {
     background: $task-color-3;
   }
@@ -25,7 +25,7 @@
   }
 }
 
-.task-summary:nth-child(4) {
+.task:nth-child(4) {
   .start {
     background: $task-color-4;
   }
