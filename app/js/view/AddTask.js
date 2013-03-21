@@ -12,13 +12,24 @@
     className: 'add-task-container',
     tagName: 'li',
     events: {
-      'click .add-task': 'addTask'
+      'click .to-add-task': 'toAddTask',
+      'submit form': 'addTask'
     },
-    addTask: function() {
+    addTask: function(event) {
+      event.preventDefault();
       this.collection.create({
         name: this.$el.find('.new-task-name').val()
       });
       adjustElementDisplay(this.$el, this.collection);
+      this.$el.find('form').hide();
+      this.$el.find('.add-task-title').show();
+      this.$el.find('.add-task-markup').show();
+    },
+    toAddTask: function() {
+      this.$el.find('form').show();
+      this.$el.find('.add-task-title').hide();
+      this.$el.find('.add-task-markup').hide();
+      this.$el.find('.new-task-name').focus();
     },
     render: function() {
       this.$el.html(this.template());

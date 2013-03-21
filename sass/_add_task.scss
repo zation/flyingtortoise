@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.add-task {
+.to-add-task {
   height: $task-radius-length;
   width: $task-radius-length;
   display: block;
@@ -12,6 +12,23 @@
   border-radius: 100%;
   border: 5px dashed;
   background: none;
+}
+
+.add-task {
+  display: none;
+}
+
+.new-task-name {
+  font-size: 14px;
+  line-height: 24px;
+  width: 110px;
+}
+
+.add-task-container form {
+  display: none;
+  position: absolute;
+  top: 70px;
+  width: 100%;
 }
 
 .add-task-markup {
@@ -33,7 +50,7 @@
 }
 
 .task-order-1 {
-  .add-task {
+  .to-add-task {
     border-color: $task-color-1;
   }
   .add-task-markup {
@@ -42,7 +59,7 @@
 }
 
 .task-order-2 {
-  .add-task {
+  .to-add-task {
     border-color: $task-color-2;
   }
   .add-task-markup {
@@ -51,7 +68,7 @@
 }
 
 .task-order-3 {
-  .add-task {
+  .to-add-task {
     border-color: $task-color-3;
   }
   .add-task-markup {
@@ -60,7 +77,7 @@
 }
 
 .task-order-4 {
-  .add-task {
+  .to-add-task {
     border-color: $task-color-4;
   }
   .add-task-markup {

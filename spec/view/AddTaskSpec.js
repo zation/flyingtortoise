@@ -1,6 +1,9 @@
 describe('AddTask View', function() {
   var collection;
   var addTaskView;
+  var eventStub = {
+    preventDefault: function() {}
+  };
 
   beforeEach(function() {
     collection = new app.collection.Tasks();
@@ -12,7 +15,7 @@ describe('AddTask View', function() {
   it('should add task', function() {
     var expectedTaskName = 'expected task name';
     addTaskView.$el.find('.new-task-name').val(expectedTaskName);
-    addTaskView.addTask();
+    addTaskView.addTask(eventStub);
 
     expect(collection.length).toBe(1);
     expect(collection.at(0).get('name')).toBe(expectedTaskName);
@@ -21,11 +24,11 @@ describe('AddTask View', function() {
   it('should update class name when added task', function() {
     expect(addTaskView.$el).toHaveClass('task-order-1');
 
-    addTaskView.addTask();
+    addTaskView.addTask(eventStub);
 
     expect(addTaskView.$el).toHaveClass('task-order-2');
 
-    addTaskView.addTask();
+    addTaskView.addTask(eventStub);
 
     expect(addTaskView.$el).toHaveClass('task-order-3');
   });
@@ -49,6 +52,25 @@ describe('AddTask View', function() {
     });
   });
 
+  it('should show add task form when click to add task button', function() {
+    setFixtures(addTaskView.$el);
+    addTaskView.toAddTask();
+
+    expect(addTaskView.$el.find('form')).toBeVisible();
+    expect(addTaskView.$el.find('.add-task-title')).toBeHidden();
+    expect(addTaskView.$el.find('.add-task-markup')).toBeHidden();
+    expect(addTaskView.$el.find('.new-task-name')).toBeFocused();
+  });
+
+  it('should hide add task form after added task', function() {
+    setFixtures(addTaskView.$el);
+    addTaskView.addTask(eventStub);
+
+    expect(addTaskView.$el.find('form')).toBeHidden();
+    expect(addTaskView.$el.find('.add-task-title')).toBeVisible();
+    expect(addTaskView.$el.find('.add-task-markup')).toBeVisible();
+  });
+
   function add4TasksToCollection() {
     collection.add([
       {},
@@ -60,7 +82,7 @@ describe('AddTask View', function() {
 
   function add4TasksToView() {
     for (var i = 0; i < 4; i++) {
-      addTaskView.addTask();
+      addTaskView.addTask(eventStub);
     }
   }
 });
