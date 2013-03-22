@@ -1,4 +1,4 @@
-describe('TaskSummary View', function() {
+describe('Task View', function() {
   it('should render', function() {
     var expectedName = 'name';
     var taskView = new app.view.Task({
@@ -10,16 +10,15 @@ describe('TaskSummary View', function() {
   });
 
   it('should start task when click start button', function() {
-    var taskModel = new app.model.Task();
+    spyOn(app.Event, 'trigger');
+    var expectedModel = new app.model.Task();
     var taskView = new app.view.Task({
-      model: taskModel
+      model: expectedModel
     });
-    var startAt = moment('2000-01-10 09:00:00');
-    spyOn(window, 'moment').andReturn(startAt);
-    taskView.$el.find('.start').click();
-    taskModel.stop(startAt.clone().add('second', 1));
+    setFixtures(taskView.$el);
+    taskView.startTask();
 
-    expect(taskModel.get('records')[0].date).toBe('2000-01-10');
-    expect(taskModel.get('records')[0].time).toBe(1);
+    expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStart, expectedModel);
+    expect(taskView.$el).toBeHidden();
   });
 });

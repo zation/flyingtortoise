@@ -11,5 +11,6 @@ app.view.Main = Backbone.View.extend({
       collection: this.collection
     });
     this.$el.append(home.$el);
+    new app.view.Time();
   }
 });

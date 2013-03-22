@@ -2,6 +2,7 @@ describe('Manager', function() {
   it('should load template', function() {
     setFixtures('<div class="app"></div>');
     spyOn(app.view, 'Home');
+    spyOn(app.view, 'Time');
 
     var manager = new app.Manager();
 
