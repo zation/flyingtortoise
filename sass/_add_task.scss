@@ -49,38 +49,40 @@
   z-index: -1;
 }
 
-.task-order-1 {
-  .to-add-task {
-    border-color: $task-color-1;
+.add-task-container {
+  &.task-order-1 {
+    .to-add-task {
+      border-color: $task-color-1;
+    }
+    .add-task-markup {
+      color: $task-color-1;
+    }
   }
-  .add-task-markup {
-    color: $task-color-1;
-  }
-}
 
-.task-order-2 {
-  .to-add-task {
-    border-color: $task-color-2;
+  &.task-order-2 {
+    .to-add-task {
+      border-color: $task-color-2;
+    }
+    .add-task-markup {
+      color: $task-color-2;
+    }
   }
-  .add-task-markup {
-    color: $task-color-2;
-  }
-}
 
-.task-order-3 {
-  .to-add-task {
-    border-color: $task-color-3;
+  &.task-order-3 {
+    .to-add-task {
+      border-color: $task-color-3;
+    }
+    .add-task-markup {
+      color: $task-color-3;
+    }
   }
-  .add-task-markup {
-    color: $task-color-3;
-  }
-}
 
-.task-order-4 {
-  .to-add-task {
-    border-color: $task-color-4;
-  }
-  .add-task-markup {
-    color: $task-color-4;
+  &.task-order-4 {
+    .to-add-task {
+      border-color: $task-color-4;
+    }
+    .add-task-markup {
+      color: $task-color-4;
+    }
   }
 }

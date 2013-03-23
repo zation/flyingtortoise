@@ -1,0 +1,21 @@
+.time {
+  text-align: center;
+}
+
+.time {
+  &.task-order-1 .task-name {
+    color: $task-color-1;
+  }
+
+  &.task-order-2 .task-name {
+    color: $task-color-2;
+  }
+
+  &.task-order-3 .task-name {
+    color: $task-color-3;
+  }
+
+  &.task-order-4 .task-name {
+    color: $task-color-4;
+  }
+}

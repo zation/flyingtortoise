@@ -1,36 +1,38 @@
-.task-order-1 {
-  .start {
-    background: $task-color-1;
+.task {
+  &.task-order-1 {
+    .start {
+      background: $task-color-1;
+    }
+    .task-name {
+      color: $task-color-1;
+    }
   }
-  .task-name {
-    color: $task-color-1;
-  }
-}
 
-.task-order-2 {
-  .start {
-    background: $task-color-2;
+  &.task-order-2 {
+    .start {
+      background: $task-color-2;
+    }
+    .task-name {
+      color: $task-color-2;
+    }
   }
-  .task-name {
-    color: $task-color-2;
-  }
-}
 
-.task-order-3 {
-  .start {
-    background: $task-color-3;
+  &.task-order-3 {
+    .start {
+      background: $task-color-3;
+    }
+    .task-name {
+      color: $task-color-3;
+    }
   }
-  .task-name {
-    color: $task-color-3;
-  }
-}
 
-.task-order-4 {
-  .start {
-    background: $task-color-4;
-  }
-  .task-name {
-    color: $task-color-4;
+  &.task-order-4 {
+    .start {
+      background: $task-color-4;
+    }
+    .task-name {
+      color: $task-color-4;
+    }
   }
 }
 

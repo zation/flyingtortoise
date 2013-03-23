@@ -13,6 +13,17 @@ describe('Time View', function() {
     expect(timeView.$el).toBeVisible();
   });
 
+  it('should generate task order class name', function() {
+    taskModel.set('order', 2);
+    timeView.startTask(taskModel);
+
+    expect(timeView.$el).toHaveClass('task-order-2');
+
+    timeView.stopTask();
+
+    expect(timeView.$el).not.toHaveClass('task-order-2');
+  });
+
   it('should record time', function() {
     var momentStub = moment('2000-01-10 09:00:00');
     var stopAt = momentStub.clone().add('second', 1);
