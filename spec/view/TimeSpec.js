@@ -44,10 +44,12 @@ describe('Time View', function() {
     spyOn(window, 'moment').andReturn(expectedMoment);
     spyOn(taskModel, 'stop');
     spyOn(taskModel, 'save');
+    spyOn(app.Event, 'trigger');
     timeView.model = taskModel;
     timeView.stopTask();
 
     expect(timeView.model.stop).toHaveBeenCalledWith(expectedMoment);
-    expect(timeView.$el).not.toExist();
+    expect(timeView.$el).toBeHidden();
+    expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStop);
   });
 });

@@ -6,7 +6,8 @@ app.view.Time = Backbone.View.extend({
   stopTask: function() {
     this.model.stop(moment());
     this.model.save();
-    this.remove();
+    this.$el.hide();
+    app.Event.trigger(app.Event.TaskStop);
   },
   startTask: function(model) {
     this.$el.html(this.template(model.attributes));

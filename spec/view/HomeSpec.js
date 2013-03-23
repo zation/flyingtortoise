@@ -16,4 +16,11 @@ describe('Home View', function() {
 
     expect(homeView.$el).toBeHidden();
   });
+
+  it('should show when task stop', function() {
+    setFixtures(homeView.$el);
+    app.Event.trigger(app.Event.TaskStop);
+
+    expect(homeView.$el).toBeVisible();
+  });
 });
