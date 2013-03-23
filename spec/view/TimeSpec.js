@@ -6,6 +6,13 @@ describe('Time View', function() {
     timeView = new app.view.Time();
   });
 
+  it('should show when start task', function() {
+    setFixtures(timeView.$el);
+    expect(timeView.$el).toBeHidden();
+    app.Event.trigger(app.Event.TaskStart, taskModel);
+    expect(timeView.$el).toBeVisible();
+  });
+
   it('should record time', function() {
     var momentStub = moment('2000-01-10 09:00:00');
     var stopAt = momentStub.clone().add('second', 1);
