@@ -20,4 +20,14 @@ describe('Task View', function() {
 
     expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStart, expectedModel);
   });
+
+  it('should generate the class of order', function() {
+    var taskView = new app.view.Task({
+      model: new app.model.Task({
+        order: 2
+      })
+    });
+
+    expect(taskView.$el).toHaveClass('task-order-2');
+  });
 });

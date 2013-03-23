@@ -18,7 +18,8 @@
     addTask: function(event) {
       event.preventDefault();
       this.collection.create({
-        name: this.$el.find('.new-task-name').val()
+        name: this.$el.find('.new-task-name').val(),
+        order: this.collection.length + 1
       });
       adjustElementDisplay(this.$el, this.collection);
       this.$el.find('form').hide();

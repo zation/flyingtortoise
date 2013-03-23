@@ -7,7 +7,7 @@
   }
 
   function handleRecords(records, stopAt, fix) {
-    if (records) {
+    if (records.length > 0) {
       var lastRecord = records[records.length - 1];
       if (lastRecord.date === _startAt.format(DATE_FORMAT)) {
         lastRecord.time += stopAt.diff(_startAt, 'seconds') + fix;
@@ -31,6 +31,12 @@
   }
 
   app.model.Task = Backbone.Model.extend({
+    defaults: {
+      'order': 0,
+      'name': 'no name',
+      'records': []
+    },
+
     start: function(startAt) {
       _startAt = startAt;
     },
