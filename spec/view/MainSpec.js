@@ -4,6 +4,7 @@ describe('Main View', function() {
   beforeEach(function() {
     spyOn(app.view.Home.prototype, 'initialize');
     spyOn(app.view.Time.prototype, 'initialize');
+    spyOn(app.view.State.prototype, 'initialize');
     mainView = new app.view.Main();
   });
 
@@ -24,5 +25,21 @@ describe('Main View', function() {
 
     expect(mainView.$el).toHaveHtml(expectedTemplate);
     expect(mainView.$el).toBeVisible();
+  });
+
+  //TODO: refactor orientationchange event
+  xit('should listen orientation change event', function() {
+    setFixtures(mainView.$el);
+    window.orientation = 90;
+    $(window).trigger('orientationchange');
+
+    expect(mainView.$el.find('.home')).toBeHidden();
+    expect(mainView.$el.find('.state')).toBeVisible();
+
+    window.orientation = 0;
+    $(window).trigger('orientationchange');
+
+    expect(mainView.$el.find('.home')).toBeVisible();
+    expect(mainView.$el.find('.state')).toBeHidden();
   });
 });
