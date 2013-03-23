@@ -63,4 +63,35 @@ describe('Time View', function() {
     expect(timeView.$el).toBeHidden();
     expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStop);
   });
+
+  describe('should display time', function() {
+    beforeEach(function() {
+      jasmine.Clock.useMock();
+      timeView.startTask(taskModel);
+    });
+
+    it('when seconds are less than 10', function() {
+      jasmine.Clock.tick(7000);
+
+      expect(timeView.$el.find('time')).toHaveText('00:07');
+    });
+
+    it('when seconds are more than 10', function() {
+      jasmine.Clock.tick(17000);
+
+      expect(timeView.$el.find('time')).toHaveText('00:17');
+    });
+
+    it('when minutes are less than 10', function() {
+      jasmine.Clock.tick(70000);
+
+      expect(timeView.$el.find('time')).toHaveText('01:10');
+    });
+
+    it('when minutes are more than 10', function() {
+      jasmine.Clock.tick(700000);
+
+      expect(timeView.$el.find('time')).toHaveText('11:40');
+    });
+  });
 });
