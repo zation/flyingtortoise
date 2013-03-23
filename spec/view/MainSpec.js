@@ -7,11 +7,12 @@ describe('Main View', function() {
     mainView = new app.view.Main();
   });
 
-  it('initViews should initialize home view and time view', function() {
+  it('initViews should initialize home view, time view and state view', function() {
     mainView.initViews();
 
     expect(mainView.$el).toContain('.home');
     expect(mainView.$el).toContain('.time');
+    expect(mainView.$el).toContain('.state');
   });
 
   it('setTemplate should append template and display element', function() {

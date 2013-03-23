@@ -3,6 +3,7 @@ describe('Manager', function() {
     setFixtures('<div class="app"></div>');
     spyOn(app.view, 'Home');
     spyOn(app.view, 'Time');
+    spyOn(app.view, 'State');
 
     var manager = new app.Manager();
 
