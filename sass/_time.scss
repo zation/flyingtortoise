@@ -3,23 +3,55 @@
 }
 
 .time {
-  &.task-order-1 .task-name {
-    color: $task-color-1;
+  &.task-order-1 {
+    .task-name {
+      color: $task-color-1;
+    }
+    time {
+      border-color: $task-color-1;
+    }
   }
 
-  &.task-order-2 .task-name {
-    color: $task-color-2;
+  &.task-order-2 {
+    .task-name {
+      color: $task-color-2;
+    }
+    time {
+      border-color: $task-color-2;
+    }
   }
 
-  &.task-order-3 .task-name {
-    color: $task-color-3;
+  &.task-order-3 {
+    .task-name {
+      color: $task-color-3;
+    }
+    time {
+      border-color: $task-color-3;
+    }
   }
 
-  &.task-order-4 .task-name {
-    color: $task-color-4;
+  &.task-order-4 {
+    .task-name {
+      color: $task-color-4;
+    }
+    time {
+      border-color: $task-color-4;
+    }
+  }
+
+  .task-name {
+    margin:  10px auto 30px;
+    font-size: 24px;
   }
 }
 
 .time time {
   color: white;
+  font-size: 85px;
+  display: block;
+  border: 10px solid;
+  margin: 0 auto;
+  width: 300px;
+  line-height: 300px;
+  border-radius: 300px;
 }

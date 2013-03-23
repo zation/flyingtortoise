@@ -34,6 +34,11 @@
       color: $task-color-4;
     }
   }
+
+  .task-name {
+    font-size: 24px;
+    font-weight: bold;
+  }
 }
 
 .start {
@@ -43,9 +48,4 @@
   border: 15px solid white;
   height: $task-radius-length;
   width: $task-radius-length;
-}
-
-.task-name {
-  font-size: 24px;
-  font-weight: bold;
 }
