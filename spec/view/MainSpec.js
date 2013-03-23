@@ -11,7 +11,7 @@ describe('Main View', function() {
     mainView.initViews();
 
     expect(mainView.$el).toContain('.home');
-    expect(app.view.Time.prototype.initialize).toHaveBeenCalled();
+    expect(mainView.$el).toContain('.time');
   });
 
   it('setTemplate should append template and display element', function() {

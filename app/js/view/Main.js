@@ -7,10 +7,11 @@ app.view.Main = Backbone.View.extend({
     this.$el.show();
   },
   initViews: function() {
-    var home = new app.view.Home({
+    var homeView = new app.view.Home({
       collection: this.collection
     });
-    this.$el.append(home.$el);
-    new app.view.Time();
+    this.$el.append(homeView.$el);
+    var timeView = new app.view.Time();
+    this.$el.append(timeView.$el);
   }
 });

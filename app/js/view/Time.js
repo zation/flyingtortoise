@@ -9,7 +9,7 @@ app.view.Time = Backbone.View.extend({
     this.remove();
   },
   startTask: function(model) {
-    this.$el.append(this.template(model.attributes));
+    this.$el.html(this.template(model.attributes));
     this.model = model;
     this.model.start(moment());
   },

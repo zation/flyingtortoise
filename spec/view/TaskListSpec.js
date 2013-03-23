@@ -1,5 +1,5 @@
 describe('TaskList View', function() {
-  it('should append task summary and add task view when initialize', function() {
+  it('should append task view and add task view when initialize', function() {
     var collection = new app.collection.Tasks().add([{}, {}]);
     var taskListView = new app.view.TaskList({
       collection: collection

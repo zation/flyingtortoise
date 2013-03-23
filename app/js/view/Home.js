@@ -1,5 +1,8 @@
 app.view.Home = Backbone.View.extend({
   className: 'home',
+  switchOut: function() {
+    this.$el.hide();
+  },
   initialize: function() {
     this.template = _.template($('#home').html());
 
@@ -8,5 +11,6 @@ app.view.Home = Backbone.View.extend({
     });
     this.$el.append(this.template());
     this.$el.append(taskListView.$el);
+    app.Event.on(app.Event.TaskStart, this.switchOut, this);
   }
 });

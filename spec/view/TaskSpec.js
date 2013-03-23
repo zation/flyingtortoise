@@ -19,6 +19,5 @@ describe('Task View', function() {
     taskView.startTask();
 
     expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStart, expectedModel);
-    expect(taskView.$el).toBeHidden();
   });
 });

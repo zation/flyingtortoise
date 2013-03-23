@@ -5,7 +5,6 @@ app.view.Task = Backbone.View.extend({
     'click .start': 'startTask'
   },
   startTask: function() {
-    this.$el.hide();
     app.Event.trigger(app.Event.TaskStart, this.model);
   },
   render: function() {
