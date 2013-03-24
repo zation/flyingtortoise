@@ -11,21 +11,21 @@ describe('Home View', function() {
   });
 
   it('should hide when task start', function() {
-    setFixtures(homeView.$el);
+    appendSetFixtures(homeView.$el);
     app.Event.trigger(app.Event.TaskStart);
 
     expect(homeView.$el).toBeHidden();
   });
 
   it('should show when task stop', function() {
-    setFixtures(homeView.$el);
+    appendSetFixtures(homeView.$el);
     app.Event.trigger(app.Event.TaskStop);
 
     expect(homeView.$el).toBeVisible();
   });
 
   it('should hide view when screen is vertical and view is visible', function() {
-    setFixtures(homeView.$el);
+    appendSetFixtures(homeView.$el);
     homeView.$el.show();
     app.Event.trigger(app.Event.Rotate, 90);
 
@@ -33,7 +33,7 @@ describe('Home View', function() {
   });
 
   it('should display view when screen is horizontal and task not started', function() {
-    setFixtures(homeView.$el);
+    appendSetFixtures(homeView.$el);
     homeView.switchIn();
     homeView.$el.hide();
     app.Event.trigger(app.Event.Rotate, 0);

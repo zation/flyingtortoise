@@ -35,7 +35,7 @@ describe('AddTask View', function() {
 
   describe('should hide when there are 4 tasks', function() {
     it('after add task', function() {
-      setFixtures(addTaskView.$el);
+      appendSetFixtures(addTaskView.$el);
       add4TasksToView();
 
       expect(addTaskView.$el).toBeHidden();
@@ -46,14 +46,14 @@ describe('AddTask View', function() {
       addTaskView = new app.view.AddTask({
         collection: collection
       });
-      setFixtures(addTaskView.$el);
+      appendSetFixtures(addTaskView.$el);
 
       expect(addTaskView.$el).toBeHidden();
     });
   });
 
   it('should show add task form when click to add task button', function() {
-    setFixtures(addTaskView.$el);
+    appendSetFixtures(addTaskView.$el);
     addTaskView.toAddTask();
 
     expect(addTaskView.$el.find('form')).toBeVisible();
@@ -63,7 +63,7 @@ describe('AddTask View', function() {
   });
 
   it('should hide add task form after added task', function() {
-    setFixtures(addTaskView.$el);
+    appendSetFixtures(addTaskView.$el);
     addTaskView.addTask(eventStub);
 
     expect(addTaskView.$el.find('form')).toBeHidden();

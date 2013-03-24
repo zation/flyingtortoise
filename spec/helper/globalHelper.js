@@ -3,8 +3,6 @@ beforeEach(function() {
   loadFixtures('main.html');
   jasmine.Ajax.useMock();
 
-  app.Event.off(app.Event.Rotate);
-
   this.addMatchers({
     toHaveUrl: function(url) {
       var fullUrl = this.actual.url;

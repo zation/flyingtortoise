@@ -15,7 +15,7 @@ describe('Task View', function() {
     var taskView = new app.view.Task({
       model: expectedModel
     });
-    setFixtures(taskView.$el);
+    appendSetFixtures(taskView.$el);
     taskView.startTask();
 
     expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStart, expectedModel);

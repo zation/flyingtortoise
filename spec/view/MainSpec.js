@@ -17,7 +17,7 @@ describe('Main View', function() {
   });
 
   it('setTemplate should append template and display element', function() {
-    setFixtures(mainView.$el);
+    appendSetFixtures(mainView.$el);
     expect(mainView.$el).toBeHidden();
 
     var expectedTemplate = '<div></div>';

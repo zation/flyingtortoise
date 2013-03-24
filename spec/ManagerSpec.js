@@ -1,6 +1,6 @@
 describe('Manager', function() {
   it('should load template', function() {
-    setFixtures('<div class="app"></div>');
+    appendSetFixtures('<div class="app"></div>');
     spyOn(app.view, 'Home');
     spyOn(app.view, 'Time');
     spyOn(app.view, 'State');

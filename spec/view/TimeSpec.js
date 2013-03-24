@@ -7,7 +7,7 @@ describe('Time View', function() {
   });
 
   it('should show when start task', function() {
-    setFixtures(timeView.$el);
+    appendSetFixtures(timeView.$el);
     expect(timeView.$el).toBeHidden();
     app.Event.trigger(app.Event.TaskStart, taskModel);
     expect(timeView.$el).toBeVisible();
@@ -96,7 +96,7 @@ describe('Time View', function() {
   });
 
   it('should hide view when screen is vertical and view is visible', function() {
-    setFixtures(timeView.$el);
+    appendSetFixtures(timeView.$el);
     timeView.$el.show();
     app.Event.trigger(app.Event.Rotate, 90);
 
@@ -104,7 +104,7 @@ describe('Time View', function() {
   });
 
   it('should display view when screen is horizontal and task already started', function() {
-    setFixtures(timeView.$el);
+    appendSetFixtures(timeView.$el);
     timeView.startTask(taskModel);
     timeView.$el.hide();
     app.Event.trigger(app.Event.Rotate, 0);
