@@ -27,19 +27,12 @@ describe('Main View', function() {
     expect(mainView.$el).toBeVisible();
   });
 
-  //TODO: refactor orientationchange event
-  xit('should listen orientation change event', function() {
-    setFixtures(mainView.$el);
-    window.orientation = 90;
+  it('should listen orientation change event', function() {
+    spyOn(app.Event, 'trigger');
+    var expectedOrientation = 90;
+    specHelper.mockOrientation(this, expectedOrientation);
     $(window).trigger('orientationchange');
 
-    expect(mainView.$el.find('.home')).toBeHidden();
-    expect(mainView.$el.find('.state')).toBeVisible();
-
-    window.orientation = 0;
-    $(window).trigger('orientationchange');
-
-    expect(mainView.$el.find('.home')).toBeVisible();
-    expect(mainView.$el.find('.state')).toBeHidden();
+    expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.Rotate, expectedOrientation);
   });
 });

@@ -41,3 +41,12 @@ mostRecentAjaxRequest = function() {
     return null;
   }
 };
+
+specHelper = {};
+specHelper.mockOrientation = function(testCase, orientation) {
+  var originOrientation = window.orientation;
+  window.orientation = orientation;
+  testCase.after(function() {
+    window.orientation = originOrientation;
+  });
+};

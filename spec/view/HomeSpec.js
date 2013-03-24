@@ -23,4 +23,21 @@ describe('Home View', function() {
 
     expect(homeView.$el).toBeVisible();
   });
+
+  it('should hide view when screen is vertical and view is visible', function() {
+    setFixtures(homeView.$el);
+    homeView.$el.show();
+    app.Event.trigger(app.Event.Rotate, 90);
+
+    expect(homeView.$el).toBeHidden();
+  });
+
+  it('should display view when screen is horizontal and task not started', function() {
+    setFixtures(homeView.$el);
+    homeView.switchIn();
+    homeView.$el.hide();
+    app.Event.trigger(app.Event.Rotate, 0);
+
+    expect(homeView.$el).toBeVisible();
+  });
 });

@@ -94,4 +94,21 @@ describe('Time View', function() {
       expect(timeView.$el.find('time')).toHaveText('11:40');
     });
   });
+
+  it('should hide view when screen is vertical and view is visible', function() {
+    setFixtures(timeView.$el);
+    timeView.$el.show();
+    app.Event.trigger(app.Event.Rotate, 90);
+
+    expect(timeView.$el).toBeHidden();
+  });
+
+  it('should display view when screen is horizontal and task already started', function() {
+    setFixtures(timeView.$el);
+    timeView.startTask(taskModel);
+    timeView.$el.hide();
+    app.Event.trigger(app.Event.Rotate, 0);
+
+    expect(timeView.$el).toBeVisible();
+  });
 });

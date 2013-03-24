@@ -1,4 +1,10 @@
 app.view.Main = Backbone.View.extend({
+  events: {
+    'orientationchange': 'onRotate'
+  },
+  onRotate: function() {
+    app.Event.trigger(app.Event.Rotate, window.orientation);
+  },
   initialize: function() {
     this.$el.hide();
   },
@@ -19,14 +25,7 @@ app.view.Main = Backbone.View.extend({
     this.$el.append(stateView.$el);
 
     $(window).on('orientationchange', function() {
-      if (Math.abs(window.orientation) === 90 && homeView.$el.is(':visible')) {
-        homeView.$el.hide();
-        stateView.$el.show();
-      }
-      else if(stateView.$el.is(':visible')) {
-        stateView.$el.hide();
-        homeView.$el.show();
-      }
+      app.Event.trigger(app.Event.Rotate, window.orientation);
     });
   }
 });
