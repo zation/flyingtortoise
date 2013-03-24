@@ -1,0 +1,59 @@
+.switcher {
+  float: left;
+  margin-left: 10px;
+  position: relative;
+
+  &.task-order-1 .activate {
+    border-color: $task-color-1;
+    background: $task-color-1;
+  }
+
+  &.task-order-2 .activate {
+    border-color: $task-color-2;
+    background: $task-color-2;
+  }
+
+  &.task-order-3 .activate {
+    border-color: $task-color-3;
+    background: $task-color-3;
+  }
+
+  &.task-order-4 .activate {
+    border-color: $task-color-4;
+    background: $task-color-4;
+  }
+
+  .activate {
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    border: 2px solid;
+  }
+
+  &.active .activate {
+    background: transparent;
+  }
+
+  .task-time {
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 7px;
+    color: white;
+  }
+
+  &.active .task-time {
+    display: block;
+  }
+
+  .hours {
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 12px;
+  }
+
+  .unit {
+    font-size: 12px;
+    font-weight: lighter;
+  }
+}
