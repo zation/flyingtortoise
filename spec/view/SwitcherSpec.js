@@ -4,7 +4,7 @@ describe('Switcher View', function() {
 
   beforeEach(function() {
     taskModel = new app.model.Task({
-      total: 60,
+      total: 3600,
       order: 2
     });
     switcherView = new app.view.Switcher({
