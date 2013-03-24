@@ -13,6 +13,7 @@
       this.model.save();
       this.$el.removeClass('task-order-' + this.model.get('order'));
       this.$el.hide();
+      clearInterval(recorderTimer);
       app.Event.trigger(app.Event.TaskStop);
     },
     startTask: function(model) {

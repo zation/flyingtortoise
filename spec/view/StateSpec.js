@@ -1,21 +1,34 @@
 describe('State View', function() {
   var stateView;
+  var tasksCollection;
+
   beforeEach(function() {
-    stateView = new app.view.State();
+    tasksCollection = new app.collection.Tasks({});
+    stateView = new app.view.State({
+      collection: tasksCollection
+    });
   });
+
   it('should hide view when screen is vertical and view is visible', function() {
-    setFixtures(stateView.$el);
+    appendSetFixtures(stateView.$el);
     stateView.$el.show();
     app.Event.trigger(app.Event.Rotate, 0);
 
     expect(stateView.$el).toBeHidden();
   });
 
-  it('should display view when screen is horizontal', function() {
-    setFixtures(stateView.$el);
-    stateView.$el.hide();
+  it('should render view when screen is horizontal', function() {
+    spyOn(stateView, 'render');
     app.Event.trigger(app.Event.Rotate, 90);
 
+    expect(stateView.render).toHaveBeenCalled();
+  });
+
+  it('should render', function() {
+    appendSetFixtures(stateView.$el);
+    stateView.render();
+
     expect(stateView.$el).toBeVisible();
+    expect(stateView.$el).toContain('.switcher');
   });
 });

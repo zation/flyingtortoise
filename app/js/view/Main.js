@@ -21,7 +21,9 @@ app.view.Main = Backbone.View.extend({
     var timeView = new app.view.Time();
     this.$el.append(timeView.$el);
 
-    var stateView = new app.view.State();
+    var stateView = new app.view.State({
+      collection: this.collection
+    });
     this.$el.append(stateView.$el);
 
     $(window).on('orientationchange', function() {
