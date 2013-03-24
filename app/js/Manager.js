@@ -8,6 +8,7 @@ app.Manager = (function() {
   var manager = function() {
     this.mainCollection = new app.collection.Tasks();
     this.mainCollection.fetch();
+    this.mainCollection.completeData(moment());
     this.mainView = new app.view.Main({
       el: $('.app'),
       collection: this.mainCollection
