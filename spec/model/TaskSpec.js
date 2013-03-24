@@ -28,6 +28,7 @@ describe('Task Model', function() {
         expect(records.length).toBe(2);
         expect(records[1].date).toBe('2000-01-02');
         expect(records[1].time).toBe(2);
+        expect(taskModel.get('total')).toBe(2);
       });
 
       it('and has previous data in the same day', function() {
@@ -44,6 +45,7 @@ describe('Task Model', function() {
         expect(records.length).toBe(1);
         expect(records[0].date).toBe('2000-01-02');
         expect(records[0].time).toBe(2);
+        expect(taskModel.get('total')).toBe(2);
       })
     });
 
@@ -55,6 +57,7 @@ describe('Task Model', function() {
       expect(records.length).toBe(1);
       expect(records[0].date).toBe('2000-01-02');
       expect(records[0].time).toBe(1);
+      expect(taskModel.get('total')).toBe(1);
     });
 
     it('when stat date and end date are not in the same day', function() {
@@ -69,6 +72,7 @@ describe('Task Model', function() {
       expect(records[0].time).toBe(10);
       expect(records[1].date).toBe('2000-01-03');
       expect(records[1].time).toBe(11);
+      expect(taskModel.get('total')).toBe(11);
     });
 
     it('when there are 3 days between stat date and end date', function() {
@@ -87,6 +91,7 @@ describe('Task Model', function() {
       expect(records[2].time).toBe(secondsForDayOf(2) + 10);
       expect(records[3].date).toBe('2000-01-05');
       expect(records[3].time).toBe(secondsForDayOf(3));
+      expect(taskModel.get('total')).toBe(secondsForDayOf(3));
     });
   });
 });

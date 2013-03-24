@@ -65,7 +65,7 @@
       }
       else {
         records = handleRecords(records, stopAt, total);
-        total += _.last(records).time;
+        total = _.last(records).time;
       }
       this.set('records', records);
       this.set('total', total);
