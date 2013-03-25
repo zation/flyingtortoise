@@ -24,11 +24,22 @@ describe('State View', function() {
     expect(stateView.render).toHaveBeenCalled();
   });
 
-  it('should display and append switchers when render', function() {
-    appendSetFixtures(stateView.$el);
-    stateView.render();
+  describe('should render', function() {
+    beforeEach(function() {
+      appendSetFixtures(stateView.$el);
+      stateView.render();
+    });
 
-    expect(stateView.$el).toBeVisible();
-    expect(stateView.$el).toContain('.switchers');
+    it('to display element', function() {
+      expect(stateView.$el).toBeVisible();
+    });
+
+    it('switchers', function() {
+      expect(stateView.$el).toContain('.switchers');
+    });
+
+    it('task name', function() {
+      expect(stateView.$el).toContain('.task-name');
+    });
   });
 });

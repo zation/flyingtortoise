@@ -14,6 +14,10 @@ app.view.State = Backbone.View.extend({
       collection: this.collection
     });
     this.$el.append(switchers.$el);
+    var stateTaskNameView = new app.view.StateTaskName({
+      model: this.collection.at(0)
+    });
+    this.$el.append(stateTaskNameView.$el);
   },
   initialize: function() {
     this.$el.hide();
