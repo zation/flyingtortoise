@@ -34,12 +34,16 @@ describe('State View', function() {
       expect(stateView.$el).toBeVisible();
     });
 
-    it('switchers', function() {
+    it('switchers view', function() {
       expect(stateView.$el).toContain('.switchers');
     });
 
-    it('task name', function() {
+    it('task name view', function() {
       expect(stateView.$el).toContain('.state-task-name');
+    });
+
+    it('chart view', function() {
+      expect(stateView.$el).toContain('.chart');
     });
   });
 });

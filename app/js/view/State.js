@@ -14,10 +14,15 @@ app.view.State = Backbone.View.extend({
       collection: this.collection
     });
     this.$el.append(switchers.$el);
+    var firstTask = this.collection.at(0);
     var stateTaskNameView = new app.view.StateTaskName({
-      model: this.collection.at(0)
+      model: firstTask
     });
     this.$el.append(stateTaskNameView.$el);
+    var chartView = new app.view.Chart({
+      model: firstTask
+    });
+    this.$el.append(chartView.$el);
   },
   initialize: function() {
     this.$el.hide();
