@@ -12,7 +12,7 @@ describe('Manager', function() {
     request.responseWithContent(expectedHtml, 'text/html');
 
     expect(manager.mainView.$el).toHaveHtml(expectedHtml);
-    expect(request).toHaveUrl('/template/main.html');
+    expect(request).toHaveUrl('template/main.html');
   });
 
   it('should fetch collection', function() {

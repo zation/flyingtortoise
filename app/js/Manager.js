@@ -18,7 +18,7 @@ app.Manager = (function() {
 
   manager.prototype.loadTemplates = function() {
     var mainView = this.mainView;
-    $.get('/template/main.html', function(template) {
+    $.get('template/main.html', function(template) {
       mainView.setTemplate(template);
       mainView.initViews();
     });
