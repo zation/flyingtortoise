@@ -3,11 +3,7 @@ app.view.Switcher = Backbone.View.extend({
     'click .activate': 'activate'
   },
   className: 'switcher',
-  onRotate: function(orientation) {
-    if (orientation === 0) {
-      this.remove();
-    }
-  },
+  tagName: 'li',
   activate: function() {
     if (this.$el.hasClass('active')) {
       return;
@@ -31,6 +27,5 @@ app.view.Switcher = Backbone.View.extend({
       this.$el.addClass('active');
     }
     app.Event.on(app.Event.Switch, this.doSwitch, this);
-    app.Event.on(app.Event.Rotate, this.onRotate, this);
   }
 });

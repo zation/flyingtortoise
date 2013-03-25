@@ -44,10 +44,4 @@ describe('Switcher View', function() {
     expect(switcherView.$el).toHaveClass('active');
     expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.Switch, taskModel);
   });
-
-  it('should remove view when screen is rotated to vertical', function() {
-    app.Event.trigger(app.Event.Rotate, 0);
-
-    expect(switcherView.$el).not.toExist();
-  });
 });

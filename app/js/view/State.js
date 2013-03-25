@@ -10,13 +10,10 @@ app.view.State = Backbone.View.extend({
   },
   render: function() {
     this.$el.show();
-    var stateView = this;
-    this.collection.each(function(task) {
-      var switcherView = new app.view.Switcher({
-        model: task
-      });
-      stateView.$el.append(switcherView.$el);
+    var switchers = new app.view.Switchers({
+      collection: this.collection
     });
+    this.$el.append(switchers.$el);
   },
   initialize: function() {
     this.$el.hide();

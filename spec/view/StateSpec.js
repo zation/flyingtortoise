@@ -24,11 +24,11 @@ describe('State View', function() {
     expect(stateView.render).toHaveBeenCalled();
   });
 
-  it('should render', function() {
+  it('should display and append switchers when render', function() {
     appendSetFixtures(stateView.$el);
     stateView.render();
 
     expect(stateView.$el).toBeVisible();
-    expect(stateView.$el).toContain('.switcher');
+    expect(stateView.$el).toContain('.switchers');
   });
 });
