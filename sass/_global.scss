@@ -6,7 +6,7 @@ $task-color-4: #DAD23D;
 $task-radius-length: 150px;
 
 body {
-  background: #550000;
+  @include background(image-url("background.png"));
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }

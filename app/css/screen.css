@@ -1,1 +1,362 @@
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}body{line-height:1}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0}caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}q,blockquote{quotes:none}q:before,q:after,blockquote:before,blockquote:after{content:"";content:none}a img{border:none}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}body{background:#550000;font-family:Arial, Helvetica, sans-serif;text-align:center}.home header{color:white;font-size:32px;font-weight:bold;margin:10px 0 30px}.task-list{overflow:hidden;*zoom:1}.task-list li{text-align:center;float:left;width:50%;margin:10px 0}.task.task-order-1 .start{background:#6a8a62}.task.task-order-1 .task-name{color:#6a8a62}.task.task-order-2 .start{background:#f15a2a}.task.task-order-2 .task-name{color:#f15a2a}.task.task-order-3 .start{background:#6aafcc}.task.task-order-3 .task-name{color:#6aafcc}.task.task-order-4 .start{background:#dad23d}.task.task-order-4 .task-name{color:#dad23d}.task .task-name{font-size:24px;font-weight:bold}.start{margin:10px auto;display:block;border-radius:100%;border:15px solid white;height:150px;width:150px}.add-task-container{width:50%;text-align:center;position:relative}.to-add-task{height:150px;width:150px;display:block;margin:10px auto;border-radius:100%;border:5px dashed;background:none}.add-task{display:none}.new-task-name{font-size:14px;line-height:24px;width:110px}.add-task-container form{display:none;position:absolute;top:70px;width:100%}.add-task-markup{position:absolute;top:50px;width:100%;z-index:-1;font-size:50px;font-weight:bold}.add-task-title{position:absolute;top:95px;width:100%;color:white;font-size:20px;z-index:-1}.add-task-container.task-order-1 .to-add-task{border-color:#6a8a62}.add-task-container.task-order-1 .add-task-markup{color:#6a8a62}.add-task-container.task-order-2 .to-add-task{border-color:#f15a2a}.add-task-container.task-order-2 .add-task-markup{color:#f15a2a}.add-task-container.task-order-3 .to-add-task{border-color:#6aafcc}.add-task-container.task-order-3 .add-task-markup{color:#6aafcc}.add-task-container.task-order-4 .to-add-task{border-color:#dad23d}.add-task-container.task-order-4 .add-task-markup{color:#dad23d}.time.task-order-1 .task-name{color:#6a8a62}.time.task-order-1 time{border-color:#6a8a62}.time.task-order-2 .task-name{color:#f15a2a}.time.task-order-2 time{border-color:#f15a2a}.time.task-order-3 .task-name{color:#6aafcc}.time.task-order-3 time{border-color:#6aafcc}.time.task-order-4 .task-name{color:#dad23d}.time.task-order-4 time{border-color:#dad23d}.time .task-name{margin:10px auto 30px;font-size:24px}.time time{color:white;font-size:85px;display:block;border:10px solid;margin:0 auto;width:300px;line-height:300px;border-radius:300px}.switcher{float:left;margin-left:10px;position:relative}.switcher.task-order-1 .activate{border-color:#6a8a62;background:#6a8a62}.switcher.task-order-2 .activate{border-color:#f15a2a;background:#f15a2a}.switcher.task-order-3 .activate{border-color:#6aafcc;background:#6aafcc}.switcher.task-order-4 .activate{border-color:#dad23d;background:#dad23d}.switcher .activate{height:50px;width:120px;border-radius:5px;border:2px solid}.switcher.active .activate{background:transparent}.switcher .task-time{line-height:50px;position:absolute;width:100%;top:0;color:white;z-index:-1}.switcher .hours{font-size:28px;font-weight:bold;margin-left:12px}.switcher .unit{font-size:12px;font-weight:lighter}.switchers{overflow:hidden;*zoom:1}.state{padding:10px;width:800px;margin:0 auto}.state-task-name{color:white;font-size:24px;display:block;text-align:left;margin:30px 10px}
+/* line 17, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
+
+/* line 22, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 114, /Library/Ruby/Gems/1.8/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 8, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_global.scss */
+body {
+  background: url('images/background.png?1364196577');
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+/* line 1, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_home.scss */
+.home header {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 10px 0 30px;
+}
+
+/* line 1, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task_list.scss */
+.task-list {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* line 5, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task_list.scss */
+.task-list li {
+  text-align: center;
+  float: left;
+  width: 50%;
+  margin: 10px 0;
+}
+
+/* line 3, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task.task-order-1 .start {
+  background: #6a8a62;
+}
+/* line 6, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task.task-order-1 .task-name {
+  color: #6a8a62;
+}
+/* line 12, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task.task-order-2 .start {
+  background: #f15a2a;
+}
+/* line 15, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task.task-order-2 .task-name {
+  color: #f15a2a;
+}
+/* line 21, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task.task-order-3 .start {
+  background: #6aafcc;
+}
+/* line 24, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task.task-order-3 .task-name {
+  color: #6aafcc;
+}
+/* line 30, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task.task-order-4 .start {
+  background: #dad23d;
+}
+/* line 33, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task.task-order-4 .task-name {
+  color: #dad23d;
+}
+/* line 38, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.task .task-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* line 44, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_task.scss */
+.start {
+  margin: 10px auto;
+  display: block;
+  border-radius: 100%;
+  border: 15px solid white;
+  height: 150px;
+  width: 150px;
+}
+
+/* line 1, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container {
+  width: 50%;
+  text-align: center;
+  position: relative;
+}
+
+/* line 7, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.to-add-task {
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin: 10px auto;
+  border-radius: 100%;
+  border: 5px dashed;
+  background: none;
+}
+
+/* line 17, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task {
+  display: none;
+}
+
+/* line 21, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.new-task-name {
+  font-size: 14px;
+  line-height: 24px;
+  width: 110px;
+}
+
+/* line 27, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container form {
+  display: none;
+  position: absolute;
+  top: 70px;
+  width: 100%;
+}
+
+/* line 34, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-markup {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  z-index: -1;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+/* line 43, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-title {
+  position: absolute;
+  top: 95px;
+  width: 100%;
+  color: white;
+  font-size: 20px;
+  z-index: -1;
+}
+
+/* line 54, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container.task-order-1 .to-add-task {
+  border-color: #6a8a62;
+}
+/* line 57, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container.task-order-1 .add-task-markup {
+  color: #6a8a62;
+}
+/* line 63, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container.task-order-2 .to-add-task {
+  border-color: #f15a2a;
+}
+/* line 66, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container.task-order-2 .add-task-markup {
+  color: #f15a2a;
+}
+/* line 72, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container.task-order-3 .to-add-task {
+  border-color: #6aafcc;
+}
+/* line 75, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container.task-order-3 .add-task-markup {
+  color: #6aafcc;
+}
+/* line 81, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container.task-order-4 .to-add-task {
+  border-color: #dad23d;
+}
+/* line 84, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_add_task.scss */
+.add-task-container.task-order-4 .add-task-markup {
+  color: #dad23d;
+}
+
+/* line 3, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time.task-order-1 .task-name {
+  color: #6a8a62;
+}
+/* line 6, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time.task-order-1 time {
+  border-color: #6a8a62;
+}
+/* line 12, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time.task-order-2 .task-name {
+  color: #f15a2a;
+}
+/* line 15, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time.task-order-2 time {
+  border-color: #f15a2a;
+}
+/* line 21, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time.task-order-3 .task-name {
+  color: #6aafcc;
+}
+/* line 24, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time.task-order-3 time {
+  border-color: #6aafcc;
+}
+/* line 30, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time.task-order-4 .task-name {
+  color: #dad23d;
+}
+/* line 33, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time.task-order-4 time {
+  border-color: #dad23d;
+}
+/* line 38, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time .task-name {
+  margin: 10px auto 30px;
+  font-size: 24px;
+}
+
+/* line 44, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_time.scss */
+.time time {
+  color: white;
+  font-size: 85px;
+  display: block;
+  border: 10px solid;
+  margin: 0 auto;
+  width: 300px;
+  line-height: 300px;
+  border-radius: 300px;
+}
+
+/* line 1, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher {
+  float: left;
+  margin-left: 10px;
+  position: relative;
+}
+/* line 6, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher.task-order-1 .activate {
+  border-color: #6a8a62;
+  background: #6a8a62;
+}
+/* line 11, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher.task-order-2 .activate {
+  border-color: #f15a2a;
+  background: #f15a2a;
+}
+/* line 16, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher.task-order-3 .activate {
+  border-color: #6aafcc;
+  background: #6aafcc;
+}
+/* line 21, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher.task-order-4 .activate {
+  border-color: #dad23d;
+  background: #dad23d;
+}
+/* line 26, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher .activate {
+  height: 50px;
+  width: 120px;
+  border-radius: 5px;
+  border: 2px solid;
+}
+/* line 33, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher.active .activate {
+  background: transparent;
+}
+/* line 37, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher .task-time {
+  line-height: 50px;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  color: white;
+  z-index: -1;
+}
+/* line 46, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher .hours {
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 12px;
+}
+/* line 52, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switcher.scss */
+.switcher .unit {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+/* line 1, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_switchers.scss */
+.switchers {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* line 1, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_state.scss */
+.state {
+  padding: 10px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+/* line 1, /Users/twer/Documents/Projects/github/flyingtortoise/sass/_state_task_name.scss */
+.state-task-name {
+  color: white;
+  font-size: 24px;
+  display: block;
+  text-align: left;
+  margin: 30px 10px;
+}
