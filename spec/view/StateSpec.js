@@ -39,7 +39,7 @@ describe('State View', function() {
     });
 
     it('task name', function() {
-      expect(stateView.$el).toContain('.task-name');
+      expect(stateView.$el).toContain('.state-task-name');
     });
   });
 });

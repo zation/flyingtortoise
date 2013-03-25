@@ -1,5 +1,5 @@
 app.view.StateTaskName = Backbone.View.extend({
-  className: 'task-name',
+  className: 'state-task-name',
   tagName: 'span',
   renderTaskName: function(model) {
     this.$el.text(model.get('name'));
