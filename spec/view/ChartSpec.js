@@ -1,9 +1,18 @@
 describe('Chart View', function() {
-  it('should append chart content', function() {
-    var chartView = new app.view.Chart({
+  var chartView;
+  beforeEach(function() {
+    chartView = new app.view.Chart({
       model: new app.model.Task()
     });
+  });
 
+  it('should append chart content', function() {
     expect(chartView.$el).toContain('.chart-content');
+  });
+
+  it('should remove element when rotate to vertical', function() {
+    app.Event.trigger(app.Event.Rotate, 0);
+
+    expect(chartView.$el).not.toExist();
   });
 });

@@ -11,7 +11,7 @@ app.view.Switcher = Backbone.View.extend({
     this.$el.addClass('active');
     app.Event.trigger(app.Event.Switch, this.model);
   },
-  doSwitch: function(task) {
+  onSwitch: function(task) {
     if (task.get('order') === this.model.get('order')) {
       return;
     }
@@ -26,6 +26,6 @@ app.view.Switcher = Backbone.View.extend({
     if (order === 1) {
       this.$el.addClass('active');
     }
-    app.Event.on(app.Event.Switch, this.doSwitch, this);
+    app.Event.on(app.Event.Switch, this.onSwitch, this);
   }
 });

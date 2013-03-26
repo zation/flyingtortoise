@@ -3,15 +3,15 @@
 
   app.view.Chart = Backbone.View.extend({
     className: 'chart',
-    render: function(model) {
+    render: function() {
       var context = this.$chartContent[0].getContext('2d');
       var labels = [];
       var dataInDataSets = [];
-      _.each(model.get('records'), function(record) {
+      _.each(this.model.get('records'), function(record) {
         labels.push(record.date);
         dataInDataSets.push(record.time);
       });
-      var color = taskColors[model.get('order') - 1];
+      var color = taskColors[this.model.get('order') - 1];
       var data = {
         labels: labels,
         datasets: [
@@ -26,11 +26,21 @@
       };
       new Chart(context).Line(data);
     },
+    onSwitch: function(model) {
+      this.model = model;
+      this.render();
+    },
+    onRotate: function(orientation) {
+      if (orientation === 0) {
+        this.remove();
+      }
+    },
     initialize: function() {
       this.$chartContent = $('<canvas class="chart-content" width="600px" height="260px"></canvas>');
       this.$el.append(this.$chartContent);
-      this.render(this.model);
-      app.Event.on(app.Event.Switch, this.render, this);
+      this.render();
+      app.Event.on(app.Event.Switch, this.onSwitch, this);
+      app.Event.on(app.Event.Rotate, this.onRotate, this);
     }
   });
 })();
