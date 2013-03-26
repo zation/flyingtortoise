@@ -25,4 +25,13 @@ describe('StateTaskName View', function() {
 
     expect(stateTaskNameView.$el).toHaveText(expectedTaskName);
   });
+
+  it('should remove element when rotate to vertical', function() {
+    var stateTaskNameView = new app.view.StateTaskName({
+      model: new app.model.Task()
+    });
+    app.Event.trigger(app.Event.Rotate, 0);
+
+    expect(stateTaskNameView.$el).not.toExist();
+  });
 });
