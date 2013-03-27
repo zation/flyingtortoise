@@ -14,39 +14,61 @@ describe('Task Model', function() {
 
     describe('when records exist', function() {
       it('and no previous data in the same day', function() {
-        taskModel.set('total', 1);
+        taskModel.set('total', 2);
         taskModel.set('records', [
           {
             date: '2000-01-01',
-            time: 1
+            time: 2
           }
         ]);
         taskModel.start(startAt);
-        taskModel.stop(startAt.clone().add('second', 1));
+        taskModel.stop(startAt.clone().add('second', 4));
 
         var records = taskModel.get('records');
         expect(records.length).toBe(2);
         expect(records[1].date).toBe('2000-01-02');
-        expect(records[1].time).toBe(2);
-        expect(taskModel.get('total')).toBe(2);
+        expect(records[1].time).toBe(6);
+        expect(taskModel.get('total')).toBe(6);
       });
 
       it('and has previous data in the same day', function() {
         taskModel.set('records', [
           {
             date: '2000-01-02',
-            time: 1
+            time: 4
           }
         ]);
         taskModel.start(startAt);
-        taskModel.stop(startAt.clone().add('second', 1));
+        taskModel.stop(startAt.clone().add('second', 4));
 
         var records = taskModel.get('records');
         expect(records.length).toBe(1);
         expect(records[0].date).toBe('2000-01-02');
-        expect(records[0].time).toBe(2);
-        expect(taskModel.get('total')).toBe(2);
-      })
+        expect(records[0].time).toBe(8);
+        expect(taskModel.get('total')).toBe(8);
+      });
+
+      it('and has data in the previous and current day', function() {
+        taskModel.set('total', 4);
+        taskModel.set('records', [
+          {
+            date: '2000-01-01',
+            time: 2
+          },
+          {
+            date: '2000-01-02',
+            time: 4
+          }
+        ]);
+        taskModel.start(startAt);
+        taskModel.stop(startAt.clone().add('second', 4));
+
+        var records = taskModel.get('records');
+        expect(records.length).toBe(2);
+        expect(records[1].date).toBe('2000-01-02');
+        expect(records[1].time).toBe(8);
+        expect(taskModel.get('total')).toBe(8);
+      });
     });
 
     it('when records not exit', function() {

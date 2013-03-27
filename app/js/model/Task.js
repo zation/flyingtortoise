@@ -6,16 +6,16 @@
     return 24 * 60 * 60;
   }
 
-  function handleRecords(records, stopAt, total) {
+  function handleRecords(records, stopAt) {
     if (records.length > 0) {
       var lastRecord = _.last(records);
       if (lastRecord.date === _startAt.format(DATE_FORMAT)) {
-        lastRecord.time += stopAt.diff(_startAt, 'seconds') + total;
+        lastRecord.time += stopAt.diff(_startAt, 'seconds');
       }
       else {
         records.push({
           date: _startAt.format(DATE_FORMAT),
-          time: stopAt.diff(_startAt, 'seconds') + total
+          time: stopAt.diff(_startAt, 'seconds') + lastRecord.time
         });
       }
     }
@@ -23,7 +23,7 @@
       records = [
         {
           date: _startAt.format(DATE_FORMAT),
-          time: stopAt.diff(_startAt, 'seconds') + total
+          time: stopAt.diff(_startAt, 'seconds')
         }
       ];
     }
@@ -47,7 +47,7 @@
       var total = this.get('total');
       if (!stopAt.isSame(_startAt, 'day')) {
         var endOfStartAtDay = _startAt.clone().endOf('day').add('second', 1);
-        records = handleRecords(records, endOfStartAtDay, total);
+        records = handleRecords(records, endOfStartAtDay);
         total += _.last(records).time;
         var fullDays = stopAt.diff(endOfStartAtDay, 'days');
         for (var i = 0; i < fullDays; i++) {
@@ -64,7 +64,7 @@
         });
       }
       else {
-        records = handleRecords(records, stopAt, total);
+        records = handleRecords(records, stopAt);
         total = _.last(records).time;
       }
       this.set('records', records);
