@@ -34,6 +34,7 @@
 .add-task-markup {
   position: absolute;
   top: 50px;
+  left: 0;
   width: 100%;
   z-index: -1;
   font-size: 50px;
@@ -43,6 +44,7 @@
 .add-task-title {
   position: absolute;
   top: 95px;
+  left: 0;
   width: 100%;
   color: white;
   font-size: 20px;

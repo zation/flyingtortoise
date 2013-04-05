@@ -15,7 +15,7 @@ app.collection.Tasks = Backbone.Collection.extend({
       while (!lastDate.add('day', 1).isSame(now, 'day')) {
         records.push({
           date: lastDate.format(DATE_FORMAT),
-          time: 0
+          time: task.get('total')
         });
       }
       task.save();
