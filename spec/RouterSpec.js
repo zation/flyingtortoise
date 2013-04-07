@@ -1,10 +1,22 @@
 describe('Router', function() {
-  it('should trigger TaskStart when enter time router', function() {
-    var router = new app.Router();
+  var router;
+
+  beforeEach(function() {
+    spyOn(app.Manager.prototype, 'loadTemplates');
+    router = new app.Router();
+  });
+
+  it('should trigger task start when enter time router', function() {
     spyOn(app.Event, 'trigger');
     var model = router.manager.mainCollection.create();
     router.time(model.get('id'));
 
     expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStart, model);
+  });
+
+  it('should go to root path when task stop', function() {
+    app.Event.trigger(app.Event.TaskStop);
+
+    expect(router.goTo).toHaveBeenCalledWith('/#');
   });
 });

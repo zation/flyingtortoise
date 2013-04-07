@@ -7,8 +7,15 @@ app.Router = Backbone.Router.extend({
     app.Event.trigger(app.Event.TaskStart, this.manager.mainCollection.get(id));
   },
 
+  goTo: function(path) {
+    location.href = path;
+  },
+
   initialize: function() {
+    var router = this;
     this.manager = new app.Manager();
-    Backbone.history.start();
+    app.Event.on(app.Event.TaskStop, function() {
+      router.goTo('/#');
+    });
   }
 });
