@@ -32,6 +32,7 @@
 
   app.model.Task = Backbone.Model.extend({
     defaults: {
+      'id': 0,
       'order': 0,
       'total': 0,
       'name': 'no name',

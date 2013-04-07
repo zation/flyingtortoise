@@ -1,6 +1,8 @@
 describe('TaskList View', function() {
   it('should append task view and add task view when initialize', function() {
-    var collection = new app.collection.Tasks().add([{}, {}]);
+    var collection = new app.collection.Tasks();
+    collection.create();
+    collection.create();
     var taskListView = new app.view.TaskList({
       collection: collection
     });
@@ -14,8 +16,8 @@ describe('TaskList View', function() {
     var taskListView = new app.view.TaskList({
       collection: collection
     });
-    collection.create({});
-    collection.create({});
+    collection.create();
+    collection.create();
 
     expect(taskListView.$el.find('.task').length).toBe(2);
   });

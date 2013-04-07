@@ -3,12 +3,14 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link rel="stylesheet" href="css/screen.css"/>
 </head>
 <body class="app">
 
   <script src="js/lib.js"></script>
   <script src="js/Manager.js"></script>
+  <script src="js/Router.js"></script>
   <script src="js/Event.js"></script>
   <script src="js/model/Task.js"></script>
   <script src="js/collection/Tasks.js"></script>
@@ -25,7 +27,7 @@
   <script src="js/view/Chart.js"></script>
   <script>
     $(function() {
-      new app.Manager();
+      new app.Router();
     });
   </script>
 </body>

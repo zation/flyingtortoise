@@ -46,6 +46,7 @@ describe('AddTask View', function() {
       addTaskView = new app.view.AddTask({
         collection: collection
       });
+
       appendSetFixtures(addTaskView.$el);
 
       expect(addTaskView.$el).toBeHidden();
@@ -72,12 +73,10 @@ describe('AddTask View', function() {
   });
 
   function add4TasksToCollection() {
-    collection.add([
-      {},
-      {},
-      {},
-      {}
-    ]);
+    collection.create();
+    collection.create();
+    collection.create();
+    collection.create();
   }
 
   function add4TasksToView() {

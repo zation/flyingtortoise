@@ -1,12 +1,6 @@
 app.view.Task = Backbone.View.extend({
   className: 'task',
   tagName: 'li',
-  events: {
-    'click .start': 'startTask'
-  },
-  startTask: function() {
-    app.Event.trigger(app.Event.TaskStart, this.model);
-  },
   render: function() {
     this.$el.html(this.template(this.model.attributes));
   },
