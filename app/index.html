@@ -25,8 +25,11 @@
   <script src="js/view/Switchers.js"></script>
   <script src="js/view/StateTaskName.js"></script>
   <script src="js/view/Chart.js"></script>
+  <script src="js/helper/setupData.js"></script>
+  <script src="js/helper/rotate.js"></script>
   <script>
     $(function() {
+      setupData();
       new app.Router();
       Backbone.history.start();
     });

@@ -19,8 +19,11 @@ app.view.Switcher = Backbone.View.extend({
   },
   initialize: function() {
     this.template = _.template($('#switcher').html());
-    var totalHours = Math.round(this.model.get('total') / 3600 * 100) / 100;
-    this.$el.append(this.template({totalHours: totalHours}));
+    var totalHours = this.model.get('total');
+    this.$el.append(this.template({
+      totalHours: totalHours,
+      unit: 'sec'
+    }));
     var order = this.model.get('order');
     this.$el.addClass('task-order-' + order);
     if (order === 1) {
