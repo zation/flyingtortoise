@@ -1,6 +1,4 @@
 (function() {
-  var taskColors = ['#6A8A62', '#F15A2A', '#6AAFCC', '#DAD23D'];
-
   app.view.Chart = Backbone.View.extend({
     className: 'chart',
     render: function() {
@@ -16,7 +14,7 @@
         labels.push(moment(record.date).format('MM-DD'));
         dataInDataSets.push(record.time);
       });
-      var color = taskColors[this.model.get('order') - 1];
+      var color = app.colors[this.model.get('order') - 1];
       var data = {
         labels: labels,
         datasets: [

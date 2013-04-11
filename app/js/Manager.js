@@ -1,7 +1,8 @@
 var app = {
   view: {},
   collection: {},
-  model: {}
+  model: {},
+  colors: ['#6A8A62', '#F15A2A', '#6AAFCC', '#DAD23D']
 };
 
 app.Manager = (function() {
