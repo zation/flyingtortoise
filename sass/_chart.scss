@@ -1,0 +1,23 @@
+.chart {
+  position: relative;
+}
+
+.goal-line {
+  border-bottom: 0;
+  border-top: 1px solid white;
+  width: 500px;
+  margin: 0 0 30px 30px;
+}
+
+.goal {
+  color: #2b2929;
+  background: white;
+  border-radius: 5px;
+  position: absolute;
+  line-height: 20px;
+  width: 45px;
+  font-size: 14px;
+  text-align: center;
+  top: -10px;
+  left: -4px;
+}

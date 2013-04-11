@@ -8,15 +8,15 @@ function setupData() {
     total: 100,
     records: [
       {
-        date: '2013-4-5',
+        date: '2013-04-05',
         time: 20
       },
       {
-        date: '2013-4-6',
+        date: '2013-04-06',
         time: 50
       },
       {
-        date: '2013-4-7',
+        date: '2013-04-07',
         time: 100
       }
     ]
@@ -27,11 +27,11 @@ function setupData() {
     total: 200,
     records: [
       {
-        date: '2013-4-6',
+        date: '2013-04-06',
         time: 50
       },
       {
-        date: '2013-4-7',
+        date: '2013-04-07',
         time: 200
       }
     ]
@@ -42,23 +42,23 @@ function setupData() {
     total: 400,
     records: [
       {
-        date: '2013-4-3',
+        date: '2013-04-03',
         time: 20
       },
       {
-        date: '2013-4-4',
+        date: '2013-04-04',
         time: 50
       },
       {
-        date: '2013-4-5',
+        date: '2013-04-05',
         time: 99
       },
       {
-        date: '2013-4-6',
+        date: '2013-04-06',
         time: 127
       },
       {
-        date: '2013-4-7',
+        date: '2013-04-07',
         time: 400
       }
     ]

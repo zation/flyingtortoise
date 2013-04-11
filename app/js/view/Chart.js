@@ -2,11 +2,8 @@
   app.view.Chart = Backbone.View.extend({
     className: 'chart',
     render: function() {
-      if (this.$el.find('.chart-content')) {
-        this.$el.find('.chart-content').remove();
-      }
-      this.$chartContent = $('<canvas class="chart-content" width="550" height="200"></canvas>');
-      this.$el.append(this.$chartContent);
+      this.$el.html(this.template());
+      this.$chartContent = this.$el.find('.chart-content');
       var context = this.$chartContent[0].getContext('2d');
       var labels = [];
       var dataInDataSets = [];
@@ -45,6 +42,7 @@
       }
     },
     initialize: function() {
+      this.template = _.template($('#chart').html());
       this.render();
       app.Event.on(app.Event.Switch, this.onSwitch, this);
       app.Event.on(app.Event.Rotate, this.onRotate, this);
