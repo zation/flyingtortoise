@@ -30,7 +30,7 @@
   <script>
     $(function() {
       setupData();
-      new app.Router();
+      window.app.router = new app.Router();
       Backbone.history.start();
     });
   </script>

@@ -8,6 +8,7 @@
       'click .stop': 'stopTask'
     },
     stopTask: function() {
+      if (!isActive) return;
       isActive = false;
       this.model.stop(moment());
       this.model.save();
@@ -17,6 +18,7 @@
       app.Event.trigger(app.Event.TaskStop);
     },
     startTask: function(model) {
+      if (isActive) return;
       isActive = true;
       this.$el.html(this.template(model.attributes));
       this.$el.addClass('task-order-' + model.get('order'));
@@ -80,6 +82,10 @@
       this.$el.hide();
       app.Event.on(app.Event.TaskStart, this.startTask, this);
       app.Event.on(app.Event.Rotate, this.onRotate, this);
+      var timeView = this;
+      this.listenTo(app.router, 'route:home', function() {
+        timeView.stopTask();
+      });
     }
   });
 })();

@@ -1,6 +1,12 @@
 app.Router = Backbone.Router.extend({
   routes: {
+    '': 'home',
     'time/:id': 'time'
+  },
+
+  home: function() {
+    app.Event.trigger(app.Event.TaskStop);
+    console.log(111);
   },
 
   time: function(id) {
