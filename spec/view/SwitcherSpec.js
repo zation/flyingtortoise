@@ -12,8 +12,7 @@ describe('Switcher View', function() {
     });
   });
 
-  it('should render total hours and task order class name', function() {
-    expect(switcherView.$el.find('.hours')).toHaveText('1');
+  it('should render task order class name', function() {
     expect(switcherView.$el).toHaveClass('task-order-2');
   });
 

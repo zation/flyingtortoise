@@ -2,8 +2,13 @@ describe('Time View', function() {
   var taskModel;
   var timeView;
   beforeEach(function() {
+    app.router = _.clone(Backbone.Events);
     taskModel = new app.collection.Tasks().create();
     timeView = new app.view.Time();
+  });
+
+  afterEach(function() {
+    app.router = undefined;
   });
 
   it('should show when start task', function() {
@@ -56,6 +61,7 @@ describe('Time View', function() {
     spyOn(taskModel, 'stop');
     spyOn(taskModel, 'save');
     spyOn(app.Event, 'trigger');
+    timeView._isActive = true;
     timeView.model = taskModel;
     timeView.stopTask();
 
@@ -73,25 +79,25 @@ describe('Time View', function() {
     it('when seconds are less than 10', function() {
       jasmine.Clock.tick(7000);
 
-      expect(timeView.$el.find('time')).toHaveText('00:07');
+      expect(timeView.$el.find('.time-circle')).toHaveText('00:07');
     });
 
     it('when seconds are more than 10', function() {
       jasmine.Clock.tick(17000);
 
-      expect(timeView.$el.find('time')).toHaveText('00:17');
+      expect(timeView.$el.find('.time-circle')).toHaveText('00:17');
     });
 
     it('when minutes are less than 10', function() {
       jasmine.Clock.tick(70000);
 
-      expect(timeView.$el.find('time')).toHaveText('01:10');
+      expect(timeView.$el.find('.time-circle')).toHaveText('01:10');
     });
 
     it('when minutes are more than 10', function() {
       jasmine.Clock.tick(700000);
 
-      expect(timeView.$el.find('time')).toHaveText('11:40');
+      expect(timeView.$el.find('.time-circle')).toHaveText('11:40');
     });
   });
 
