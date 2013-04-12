@@ -29,6 +29,6 @@ app.view.Switcher = Backbone.View.extend({
     if (order === 1) {
       this.$el.addClass('active');
     }
-    app.Event.on(app.Event.Switch, this.onSwitch, this);
+    this.listenTo(app.Event, app.Event.Switch, this.onSwitch);
   }
 });

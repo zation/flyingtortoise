@@ -79,8 +79,8 @@ app.view.Time = Backbone.View.extend({
   initialize: function() {
     this.template = _.template($('#time').html());
     this.$el.hide();
-    app.Event.on(app.Event.TaskStart, this.startTask, this);
-    app.Event.on(app.Event.Rotate, this.onRotate, this);
+    this.listenTo(app.Event, app.Event.TaskStart, this.startTask);
+    this.listenTo(app.Event, app.Event.Rotate, this.onRotate);
     var timeView = this;
     this.listenTo(app.router, 'route:home', function() {
       timeView.stopTask();

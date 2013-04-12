@@ -26,6 +26,6 @@ app.view.State = Backbone.View.extend({
   },
   initialize: function() {
     this.$el.hide();
-    app.Event.on(app.Event.Rotate, this.onRotate, this);
+    this.listenTo(app.Event, app.Event.Rotate, this.onRotate);
   }
 });

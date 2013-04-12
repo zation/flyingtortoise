@@ -43,8 +43,8 @@ app.view.Chart = Backbone.View.extend({
   initialize: function() {
     this.template = _.template($('#chart').html());
     this.render();
-    app.Event.on(app.Event.Switch, this.onSwitch, this);
-    app.Event.on(app.Event.Rotate, this.onRotate, this);
+    this.listenTo(app.Event, app.Event.Switch, this.onSwitch);
+    this.listenTo(app.Event, app.Event.Rotate, this.onRotate);
   }
 });
 

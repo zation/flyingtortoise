@@ -25,8 +25,8 @@ app.view.Home = Backbone.View.extend({
     });
     this.$el.append(this.template());
     this.$el.append(taskListView.$el);
-    app.Event.on(app.Event.TaskStart, this.switchOut, this);
-    app.Event.on(app.Event.TaskStop, this.switchIn, this);
-    app.Event.on(app.Event.Rotate, this.onRotate, this);
+    this.listenTo(app.Event, app.Event.TaskStart, this.switchOut);
+    this.listenTo(app.Event, app.Event.TaskStop, this.switchIn);
+    this.listenTo(app.Event, app.Event.Rotate, this.onRotate);
   }
 });

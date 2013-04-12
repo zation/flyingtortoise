@@ -14,6 +14,6 @@ app.view.Switchers = Backbone.View.extend({
       });
       switchersView.$el.append(switcherView.$el);
     });
-    app.Event.on(app.Event.Rotate, this.onRotate, this);
+    this.listenTo(app.Event, app.Event.Rotate, this.onRotate);
   }
 });

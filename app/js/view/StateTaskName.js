@@ -11,7 +11,7 @@ app.view.StateTaskName = Backbone.View.extend({
   },
   initialize: function() {
     this.renderTaskName(this.model);
-    app.Event.on(app.Event.Switch, this.renderTaskName, this);
-    app.Event.on(app.Event.Rotate, this.onRotate, this);
+    this.listenTo(app.Event, app.Event.Switch, this.renderTaskName);
+    this.listenTo(app.Event, app.Event.Rotate, this.onRotate);
   }
 });
