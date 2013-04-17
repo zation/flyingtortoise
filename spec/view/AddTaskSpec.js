@@ -33,6 +33,13 @@ describe('AddTask View', function() {
     expect(addTaskView.$el).toHaveClass('task-order-3');
   });
 
+  it('should clear input after added task', function() {
+    addTaskView.$el.find('.new-task-name').val('some text');
+    addTaskView.addTask(eventStub);
+
+    expect(addTaskView.$el.find('.new-task-name')).toHaveValue('');
+  });
+
   describe('should hide when there are 4 tasks', function() {
     it('after add task', function() {
       appendSetFixtures(addTaskView.$el);
