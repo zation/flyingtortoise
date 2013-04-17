@@ -21,7 +21,7 @@ app.Router = Backbone.Router.extend({
     var router = this;
     this.manager = new app.Manager();
     app.Event.on(app.Event.TaskStop, function() {
-      router.goTo('/#');
+      router.goTo('#');
     });
   }
 });
