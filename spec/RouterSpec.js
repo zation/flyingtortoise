@@ -17,6 +17,6 @@ describe('Router', function() {
   it('should go to root path when task stop', function() {
     app.Event.trigger(app.Event.TaskStop);
 
-    expect(router.goTo).toHaveBeenCalledWith('/#');
+    expect(router.goTo).toHaveBeenCalledWith('#');
   });
 });
