@@ -3,4 +3,7 @@
   font-size: 32px;
   font-weight: bold;
   margin: 10px 0 30px;
+  @include background(image-url("logo.png") center center no-repeat);
+  @include hide-text;
+  height: 60px;
 }
