@@ -23,6 +23,7 @@ app.view.AddTask = Backbone.View.extend({
     this.$el.find('form').hide();
     this.$el.find('.add-task-title').show();
     this.$el.find('.add-task-markup').show();
+    this.$el.find('.new-task-name').val('');
   },
   toAddTask: function() {
     this.$el.find('form').show();
