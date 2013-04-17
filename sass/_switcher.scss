@@ -1,7 +1,6 @@
 .switcher {
-  float: left;
-  margin-left: 10px;
   position: relative;
+  width: 80px;
 
   &.task-order-1 .activate {
     border-color: $task-color-1;
@@ -25,9 +24,10 @@
 
   .activate {
     height: 50px;
-    width: 120px;
+    width: 100%;
     border-radius: 5px;
     border: 2px solid;
+    margin-bottom: 15px;
   }
 
   &.active .activate {
@@ -35,13 +35,13 @@
   }
 
   .task-time {
-    line-height: 50px;
     position: absolute;
     width: 100%;
-    top: 0;
+    top: 4px;
+    right: 10px;
     color: white;
     z-index: -1;
-    text-align: center;
+    text-align: right;
   }
 
   .hours {
