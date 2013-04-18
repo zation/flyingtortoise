@@ -19,6 +19,7 @@
     "grunt-contrib-concat": "latest",
     "grunt-contrib-jasmine": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-contrib-compass": "latest"
+    "grunt-contrib-compass": "latest",
+    "grunt-template-jasmine-istanbul": "~0.2.1"
   }
 }

@@ -51,11 +51,17 @@ module.exports = function(grunt) {
 
     jasmine: {
       test: {
-        src: ['app/js/Manager.js', 'app/js/model/Task.js', sources],
+        src: ['app/js/Manager.js', 'app/js/model/Task.js', sources,
+          '!app/js/lib.js', '!app/js/helper/*'],
         options: {
           specs: specs,
           helpers: ['spec/helper/lib.js', 'spec/helper/**/*.js'],
-          vendor: 'app/js/lib.js'
+          vendor: ['app/js/lib.js', 'app/js/helper/animation-utils.js'],
+          template : require('grunt-template-jasmine-istanbul'),
+          templateOptions: {
+            coverage: 'reports/coverage.json',
+            report: 'reports/coverage'
+          }
         }
       }
     },
