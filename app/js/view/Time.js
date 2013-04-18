@@ -24,8 +24,6 @@ app.view.Time = Backbone.View.extend({
     this.$el.show();
 
     var startTime = moment();
-    var second = 0;
-    var minute = 0;
     var color = app.colors[model.get('order') - 1];
     var $canvas = this.$el.find('.time-circle');
     var context = $canvas[0].getContext('2d');
@@ -53,7 +51,7 @@ app.view.Time = Backbone.View.extend({
       _._recorderTimer = window.requestAnimFrame(displayTime);
       var totalSeconds = (timestamp - startTime.toDate().getTime()) / 1000;
       var second = totalSeconds % 60;
-      minute = totalSeconds / 60;
+      var minute = totalSeconds / 60;
 
       var secondDisplay = parseInt(second).toString();
       var minuteDisplay = parseInt(minute).toString();
