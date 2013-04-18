@@ -12,8 +12,9 @@ app.view.Time = Backbone.View.extend({
     this.model.save();
     this.$el.removeClass('task-order-' + this.model.get('order'));
     this.$el.hide();
-    clearInterval(this._recorderTimer);
     app.Event.trigger(app.Event.TaskStop);
+
+    window.cancelAnimFrame(this._recorderTimer);
   },
   startTask: function(model) {
     if (this._isActive) return;
@@ -21,11 +22,8 @@ app.view.Time = Backbone.View.extend({
     this.$el.html(this.template(model.attributes));
     this.$el.addClass('task-order-' + model.get('order'));
     this.$el.show();
+
     var startTime = moment();
-    var second = 0;
-    var minute = 0;
-    var secondDisplay;
-    var minuteDisplay;
     var color = app.colors[model.get('order') - 1];
     var $canvas = this.$el.find('.time-circle');
     var context = $canvas[0].getContext('2d');
@@ -33,19 +31,31 @@ app.view.Time = Backbone.View.extend({
     var centerY = $canvas.height() / 2;
     var lineWidth = 10;
     var radius = $canvas.width() === 0 ? 0 : $canvas.width() / 2 - lineWidth;
-    displayTime();
+    var _ = this;
 
-    this._recorderTimer = setInterval(displayTime, 1000);
+    context.font = '85px Arial';
+    context.fillStyle = 'white';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.lineWidth = lineWidth;
+    context.strokeStyle = color;
+
+    this._recorderTimer = null;
     this.model = model;
     this.model.start(startTime);
+    displayTime();
 
-    function displayTime() {
-      if (second > 59) {
-        minute++;
-        second = 0;
-      }
-      secondDisplay = second.toString();
-      minuteDisplay = minute.toString();
+    function displayTime(timestamp) {
+      timestamp = timestamp || startTime.toDate().getTime();
+      
+      _._recorderTimer = window.requestAnimFrame(displayTime);
+      var totalSeconds = (timestamp - startTime.toDate().getTime()) / 1000;
+      var second = totalSeconds % 60;
+      var minute = totalSeconds / 60;
+
+      var secondDisplay = parseInt(second).toString();
+      var minuteDisplay = parseInt(minute).toString();
+
       if (second < 10) {
         secondDisplay = '0' + secondDisplay;
       }
@@ -54,19 +64,14 @@ app.view.Time = Backbone.View.extend({
       }
 
       context.clearRect(0, 0, $canvas.width(), $canvas.height());
-      context.font = '85px Arial';
-      context.fillStyle = 'white';
-      context.textAlign = 'center';
-      context.textBaseline = 'middle';
       context.fillText(minuteDisplay + ':' + secondDisplay, centerX, centerY);
       $canvas.text(minuteDisplay + ':' + secondDisplay);
+
       context.beginPath();
-      context.arc(centerX, centerY, radius, -0.5 * Math.PI, 2 * Math.PI * (second + 1) / 60 - 0.5 * Math.PI, false);
-      context.lineWidth = lineWidth;
-      context.strokeStyle = color;
+      context.arc(centerX, centerY, radius, - Math.PI / 2, - Math.PI / 2 + second / 30 * Math.PI, false);
       context.stroke();
-      second++;
-    }
+      context.closePath();
+    }  
   },
   onRotate: function(orientation) {
     if (Math.abs(orientation) === 90 && this.$el.is(':visible')) {
