@@ -11,7 +11,6 @@ describe('Task View', function() {
 
     expect(taskView.$el).toHaveClass('task');
     expect(taskView.$el.find('.task-name')).toHaveText(expectedName);
-    expect(taskView.$el.find('.start')).toHaveAttr('href', '#/time/' + expectedId);
   });
 
   it('should generate the class of order', function() {
