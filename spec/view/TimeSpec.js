@@ -74,6 +74,21 @@ describe('Time View', function() {
     expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStop);
   });
 
+  it('should not trigger stop task if task is not active', function() {
+    timeView._isActive = false;
+    spyOn(app.Event, 'trigger');
+    timeView.stopTask();
+
+    expect(app.Event.trigger).not.toHaveBeenCalledWith(app.Event.TaskStop);
+  });
+
+  it('should stop task when back to home', function() {
+    spyOn(timeView, 'stopTask');
+    app.router.trigger('route:home');
+
+    expect(timeView.stopTask).toHaveBeenCalled();
+  });
+
   describe('should display time', function() {
     var now;
 

@@ -4,7 +4,7 @@ app.view.StateTaskName = Backbone.View.extend({
   renderTaskName: function(model) {
     this.$el.text(model.get('name'));
   },
-  onRotate: function() {
+  onRotate: function(orientation) {
     if (orientation === 0) {
       this.remove();
     }

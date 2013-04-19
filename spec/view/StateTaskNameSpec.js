@@ -1,8 +1,4 @@
 describe('StateTaskName View', function() {
-  beforeEach(function() {
-
-  });
-
   it('should render the task name', function() {
     var expectedTaskName = 'name';
     var stateTaskNameView = new app.view.StateTaskName({
@@ -30,6 +26,7 @@ describe('StateTaskName View', function() {
     var stateTaskNameView = new app.view.StateTaskName({
       model: new app.model.Task()
     });
+    appendSetFixtures(stateTaskNameView.$el);
     app.Event.trigger(app.Event.Rotate, 0);
 
     expect(stateTaskNameView.$el).not.toExist();

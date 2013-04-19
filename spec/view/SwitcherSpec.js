@@ -16,6 +16,17 @@ describe('Switcher View', function() {
     expect(switcherView.$el).toHaveClass('task-order-2');
   });
 
+  it('should automatically activate if first task', function() {
+    taskModel = new app.model.Task({
+      order: 1
+    });
+    switcherView = new app.view.Switcher({
+      model: taskModel
+    });
+
+    expect(switcherView.$el).toHaveClass('active');
+  });
+
   it('should remove class active when switch to other task', function() {
     switcherView.$el.addClass('active');
     app.Event.trigger(app.Event.Switch, new app.model.Task({
@@ -42,5 +53,14 @@ describe('Switcher View', function() {
 
     expect(switcherView.$el).toHaveClass('active');
     expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.Switch, taskModel);
+  });
+
+  it('should not trigger switch when already activated', function() {
+    switcherView.$el.addClass('active');
+
+    spyOn(app.Event, 'trigger');
+    switcherView.$el.find('.activate').click();
+
+    expect(app.Event.trigger).not.toHaveBeenCalled();
   });
 });

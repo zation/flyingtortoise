@@ -9,9 +9,8 @@ describe('State View', function() {
     });
   });
 
-  it('should hide view when screen is vertical and view is visible', function() {
+  it('should hide view when screen is vertical', function() {
     appendSetFixtures(stateView.$el);
-    stateView.$el.show();
     app.Event.trigger(app.Event.Rotate, 0);
 
     expect(stateView.$el).toBeHidden();
@@ -22,6 +21,16 @@ describe('State View', function() {
     app.Event.trigger(app.Event.Rotate, 90);
 
     expect(stateView.render).toHaveBeenCalled();
+  });
+
+  it('should not hide or render when screen is not vertical or horizontal', function() {
+    appendSetFixtures(stateView.$el);
+    spyOn(stateView, 'render');
+    stateView.$el.show();
+    app.Event.trigger(app.Event.Rotate, 45);
+
+    expect(stateView.$el).toBeVisible();
+    expect(stateView.render).not.toHaveBeenCalled();
   });
 
   describe('should render', function() {
