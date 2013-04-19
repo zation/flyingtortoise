@@ -32,7 +32,10 @@
 <script>
   $(function() {
     window.app.router = new app.Router();
-    Backbone.history.start();
+    Backbone.history.start({
+      pushState: true,
+      root: window.location.pathname
+    });
   });
 </script>
 </body>

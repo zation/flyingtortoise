@@ -23,4 +23,15 @@ describe('Task View', function() {
 
     expect(taskView.$el).toHaveClass('task-order-2');
   });
+
+  it('should start task when click start', function() {
+    var taskModel = new app.model.Task();
+    var taskView = new app.view.Task({
+      model: taskModel
+    });
+    spyOn(app.Event, 'trigger');
+    taskView.$el.find('.start').click();
+
+    expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStart, taskModel);
+  });
 });

@@ -12,7 +12,7 @@ describe('Home View', function() {
 
   it('should hide when task start', function() {
     appendSetFixtures(homeView.$el);
-    app.Event.trigger(app.Event.TaskStart);
+    app.Event.trigger(app.Event.TaskStart, new app.model.Task());
 
     expect(homeView.$el).toBeHidden();
   });
