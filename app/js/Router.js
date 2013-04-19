@@ -4,10 +4,6 @@ app.Router = Backbone.Router.extend({
     'time/:id': 'time'
   },
 
-  home: function() {
-    app.Event.trigger(app.Event.TaskStop);
-  },
-
   time: function(id) {
     app.Event.trigger(app.Event.TaskStart, this.manager.mainCollection.get(id));
   },
