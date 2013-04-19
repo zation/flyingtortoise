@@ -86,10 +86,14 @@ module.exports = function(grunt) {
       }
     },
 
+    jshint: {
+      test: [sources, '!app/js/lib.js', '!app/js/helper/*']
+    },
+
     watch: {
       test: {
         files: [sources, specs],
-        tasks: ['jasmine:test', 'jasmine:test:build']
+        tasks: ['jasmine:test', 'jasmine:test:build', 'jshint:test']
       },
       css: {
         files: sasses + '/**/*',
@@ -107,4 +111,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+
+  grunt.registerTask('test', ['jasmine:test', 'jshint:test']);
 };

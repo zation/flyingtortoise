@@ -53,8 +53,8 @@ app.view.Time = Backbone.View.extend({
       var second = totalSeconds % 60;
       var minute = totalSeconds / 60;
 
-      var secondDisplay = parseInt(second).toString();
-      var minuteDisplay = parseInt(minute).toString();
+      var secondDisplay = parseInt(second, 10).toString();
+      var minuteDisplay = parseInt(minute, 10).toString();
 
       if (second < 10) {
         secondDisplay = '0' + secondDisplay;
