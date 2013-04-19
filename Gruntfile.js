@@ -57,10 +57,18 @@ module.exports = function(grunt) {
           specs: specs,
           helpers: ['spec/helper/lib.js', 'spec/helper/**/*.js'],
           vendor: ['app/js/lib.js', 'app/js/helper/animation-utils.js'],
-          template : require('grunt-template-jasmine-istanbul'),
+          template: require('grunt-template-jasmine-istanbul'),
           templateOptions: {
             coverage: 'reports/coverage.json',
-            report: 'reports/coverage'
+            report: [
+              {
+                type: 'html',
+                options: {dir: 'reports/coverage'}
+              },
+              {
+                type: 'text-summary'
+              }
+            ]
           }
         }
       }
@@ -81,7 +89,7 @@ module.exports = function(grunt) {
     watch: {
       test: {
         files: [sources, specs],
-        tasks: ['jasmine:test:build']
+        tasks: ['jasmine:test', 'jasmine:test:build']
       },
       css: {
         files: sasses + '/**/*',

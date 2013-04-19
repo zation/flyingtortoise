@@ -19,4 +19,11 @@ describe('Router', function() {
 
     expect(router.goTo).toHaveBeenCalledWith('#');
   });
+
+  it('should trigger task stop when enter home router', function() {
+    spyOn(app.Event, 'trigger');
+    router.home();
+
+    expect(app.Event.trigger).toHaveBeenCalledWith(app.Event.TaskStop);
+  });
 });
