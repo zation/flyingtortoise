@@ -11,15 +11,16 @@ describe('Chart View', function() {
     });
   });
 
-  xit('should append chart content', function() {
+  it('should append chart content when render', function() {
     var actualData;
-    spyOn(Chart.prototype, 'Line').andCallFake(function(data, options) {
+    spyOn(chartView._chart, 'Line').andCallFake(function(data) {
       actualData = data;
     });
 
+    chartView.render();
     expect(chartView.$el).toContain('.chart-content');
     expect(actualData.labels[0]).toBe('04-12');
-    expect(actualData.datasets.data[0]).toBe(10);
+    expect(actualData.datasets[0].data[0]).toBe(10);
   });
 
   it('should remove element when rotate to vertical', function() {

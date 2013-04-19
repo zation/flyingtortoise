@@ -1,9 +1,6 @@
 app.view.Chart = Backbone.View.extend({
   className: 'chart',
   render: function() {
-    this.$el.html(this.template());
-    this.$chartContent = this.$el.find('.chart-content');
-    var context = this.$chartContent[0].getContext('2d');
     var labels = [];
     var dataInDataSets = [];
     _.each(this.model.get('records'), function(record) {
@@ -23,7 +20,8 @@ app.view.Chart = Backbone.View.extend({
         }
       ]
     };
-    new Chart(context).Line(data, {
+
+    this._chart.Line(data, {
       pointDot: false,
       scaleOverride: true,
       scaleSteps: 5,
@@ -42,6 +40,10 @@ app.view.Chart = Backbone.View.extend({
   },
   initialize: function() {
     this.template = _.template($('#chart').html());
+    this.$el.html(this.template());
+    this.$chartContent = this.$el.find('.chart-content');
+    var context = this.$chartContent[0].getContext('2d');
+    this._chart = new Chart(context);
     this.render();
     this.listenTo(app.Event, app.Event.Switch, this.onSwitch);
     this.listenTo(app.Event, app.Event.Rotate, this.onRotate);
