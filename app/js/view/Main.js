@@ -1,10 +1,4 @@
 app.view.Main = Backbone.View.extend({
-  events: {
-    'orientationchange': 'onRotate'
-  },
-  onRotate: function() {
-    app.Event.trigger(app.Event.Rotate, window.orientation);
-  },
   initialize: function() {
     this.$el.hide();
   },
