@@ -7,27 +7,39 @@ module.exports = function(grunt) {
       'components/backbone/backbone.js',
       'components/backbone.localStorage/backbone.localStorage.js',
       'components/Chart.js/Chart.js'],
-    devDependencies = [
-      'components/jasmine-jquery/lib/jasmine-jquery.js',
-      'components/jasmine-ajax/lib/mock-ajax.js'],
-    sources = 'app/js/**/*.js',
+    sources = ['app/js/Manager.js', 'app/js/model/Task.js', 'app/js/**/*.js'],
     sasses = 'sass',
     templates = 'app/template/**/_*.html',
     specs = 'spec/**/*Spec.js';
 
   grunt.initConfig({
-    concat: {
+    copy: {
       js: {
+        expand: true,
+        flatten: true,
         src: dependencies,
-        dest: 'app/js/lib.js'
-      },
-      test: {
-        src: devDependencies,
-        dest: 'spec/helper/lib.js'
-      },
+        dest: 'app/js/lib/'
+      }
+    },
+
+    concat: {
       html: {
         src: templates,
         dest: 'app/template/main.html'
+      }
+    },
+
+    uglify: {
+      options: {
+        compress: true,
+        mangle: true,
+        report: 'min',
+        sourceMap: 'source.js.map'
+      },
+      js: {
+        files: {
+          'app/js/lib.min.js': dependencies
+        }
       }
     },
 
@@ -51,12 +63,14 @@ module.exports = function(grunt) {
 
     jasmine: {
       test: {
-        src: ['app/js/Manager.js', 'app/js/model/Task.js', sources,
-          '!app/js/lib.js', '!app/js/helper/*'],
+        src: [sources, '!app/js/lib.min.js', '!app/js/helper/*'],
         options: {
           specs: specs,
-          helpers: ['spec/helper/lib.js', 'spec/helper/**/*.js'],
-          vendor: ['app/js/lib.js', 'app/js/helper/animation-utils.js'],
+          helpers: [
+            'components/jasmine-jquery/lib/jasmine-jquery.js',
+            'components/jasmine-ajax/lib/mock-ajax.js',
+            'spec/helper/**/*.js'],
+          vendor: ['app/js/lib.min.js', 'app/js/helper/animation-utils.js'],
           template: require('grunt-template-jasmine-istanbul'),
           templateOptions: {
             coverage: 'reports/coverage.json',
@@ -87,7 +101,7 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      test: [sources, '!app/js/lib.js', '!app/js/helper/*']
+      test: [sources, '!app/js/helper/*']
     },
 
     watch: {
@@ -112,6 +126,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('test', ['jasmine:test', 'jshint:test']);
 };
