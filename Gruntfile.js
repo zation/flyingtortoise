@@ -1,16 +1,28 @@
 module.exports = function(grunt) {
 
-  var dependencies = [
-      'components/jquery/jquery.js',
-      'components/moment/moment.js',
-      'components/underscore/underscore.js',
-      'components/backbone/backbone.js',
-      'components/backbone.localStorage/backbone.localStorage.js',
-      'components/Chart.js/Chart.js'],
+  var dependencyDictionaries = [
+      ['components/jquery/', 'jquery.js'],
+      ['components/moment/', 'moment.js'],
+      ['components/underscore/', 'underscore.js'],
+      ['components/backbone/', 'backbone.js'],
+      ['components/backbone.localStorage/', 'backbone.localStorage.js'],
+      ['components/Chart.js/', 'Chart.js']
+    ],
+    dependencies = [],
     sources = ['app/js/Manager.js', 'app/js/model/Task.js', 'app/js/**/*.js'],
+    libPath = 'app/js/lib/',
+    libSources = [],
     sasses = 'sass',
     templates = 'app/template/**/_*.html',
     specs = 'spec/**/*Spec.js';
+
+  for (index in dependencyDictionaries) {
+    var dependencyDictionary = dependencyDictionaries[index];
+    var path = dependencyDictionary[0];
+    var file = dependencyDictionary[1];
+    dependencies.push(path + file);
+    libSources.push(libPath + file);
+  }
 
   grunt.initConfig({
     copy: {
@@ -18,7 +30,7 @@ module.exports = function(grunt) {
         expand: true,
         flatten: true,
         src: dependencies,
-        dest: 'app/js/lib/'
+        dest: libPath
       }
     },
 
@@ -34,11 +46,13 @@ module.exports = function(grunt) {
         compress: true,
         mangle: true,
         report: 'min',
-        sourceMap: 'source.js.map'
+        sourceMap: 'app/js/lib/lib.js.map',
+        sourceMappingURL: 'lib.js.map',
+        sourceMapPrefix: 3
       },
       js: {
         files: {
-          'app/js/lib.min.js': dependencies
+          'app/js/lib/lib.min.js': libSources
         }
       }
     },
@@ -63,7 +77,7 @@ module.exports = function(grunt) {
 
     jasmine: {
       test: {
-        src: [sources, '!app/js/lib.min.js', '!app/js/helper/*'],
+        src: [sources, '!app/js/lib.min.js', '!app/js/helper/*', '!' + libPath + '*'],
         options: {
           specs: specs,
           helpers: [
@@ -105,6 +119,10 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      js: {
+        files: dependencies,
+        tasks: ['copy:js', 'uglify:js']
+      },
       test: {
         files: [sources, specs],
         tasks: ['jasmine:test', 'jasmine:test:build', 'jshint:test']
