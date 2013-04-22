@@ -77,14 +77,14 @@ module.exports = function(grunt) {
 
     jasmine: {
       test: {
-        src: [sources, '!app/js/lib.min.js', '!app/js/helper/*', '!' + libPath + '*'],
+        src: [sources, '!app/js/helper/*', '!' + libPath + '*'],
         options: {
           specs: specs,
           helpers: [
             'components/jasmine-jquery/lib/jasmine-jquery.js',
             'components/jasmine-ajax/lib/mock-ajax.js',
             'spec/helper/**/*.js'],
-          vendor: ['app/js/lib.min.js', 'app/js/helper/animation-utils.js'],
+          vendor: ['app/js/lib/lib.min.js', 'app/js/helper/animation-utils.js'],
           template: require('grunt-template-jasmine-istanbul'),
           templateOptions: {
             coverage: 'reports/coverage.json',
