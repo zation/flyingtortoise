@@ -1,4 +1,18 @@
 module.exports = function(grunt) {
+  function handleDependencyDictionaries(dependencyDictionaries, libPath) {
+    var dependencies = [], sources = [];
+    for (var index in dependencyDictionaries) {
+      var dependencyDictionary = dependencyDictionaries[index];
+      var path = dependencyDictionary[0];
+      var file = dependencyDictionary[1];
+      dependencies.push(path + file);
+      sources.push(libPath + file);
+    }
+    return {
+      dependencies: dependencies,
+      sources: sources
+    }
+  }
 
   var dependencyDictionaries = [
       ['components/jquery/', 'jquery.js'],
@@ -8,21 +22,22 @@ module.exports = function(grunt) {
       ['components/backbone.localStorage/', 'backbone.localStorage.js'],
       ['components/Chart.js/', 'Chart.js']
     ],
-    dependencies = [],
-    sources = ['app/js/Manager.js', 'app/js/model/Task.js', 'app/js/**/*.js'],
+    testDependencyDictionaries = [
+      ['components/jasmine-jquery/lib/', 'jasmine-jquery.js'],
+      ['components/jasmine-ajax/lib/', 'mock-ajax.js']
+    ],
     libPath = 'app/js/lib/',
-    libSources = [],
+    testHelperPath = 'spec/helper/',
+    dependenciesInfo = handleDependencyDictionaries(dependencyDictionaries, libPath),
+    dependencies = dependenciesInfo.dependencies,
+    libSources = dependenciesInfo.sources,
+    testDependenciesInfo = handleDependencyDictionaries(testDependencyDictionaries, testHelperPath),
+    testDependencies = testDependenciesInfo.dependencies,
+    testHelpers = testDependenciesInfo.sources,
+    sources = ['app/js/Manager.js', 'app/js/model/Task.js', 'app/js/**/*.js'],
     sasses = 'sass',
     templates = 'app/template/**/_*.html',
     specs = 'spec/**/*Spec.js';
-
-  for (index in dependencyDictionaries) {
-    var dependencyDictionary = dependencyDictionaries[index];
-    var path = dependencyDictionary[0];
-    var file = dependencyDictionary[1];
-    dependencies.push(path + file);
-    libSources.push(libPath + file);
-  }
 
   grunt.initConfig({
     copy: {
@@ -31,6 +46,12 @@ module.exports = function(grunt) {
         flatten: true,
         src: dependencies,
         dest: libPath
+      },
+      test: {
+        expand: true,
+        flatten: true,
+        src: testDependencies,
+        dest: testHelperPath
       }
     },
 
@@ -80,10 +101,7 @@ module.exports = function(grunt) {
         src: [sources, '!app/js/helper/*', '!' + libPath + '*'],
         options: {
           specs: specs,
-          helpers: [
-            'components/jasmine-jquery/lib/jasmine-jquery.js',
-            'components/jasmine-ajax/lib/mock-ajax.js',
-            'spec/helper/**/*.js'],
+          helpers: [testHelpers, testHelperPath + '**/*.js'],
           vendor: ['app/js/lib/lib.min.js', 'app/js/helper/animation-utils.js'],
           template: require('grunt-template-jasmine-istanbul'),
           templateOptions: {
@@ -121,7 +139,7 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: dependencies,
-        tasks: ['copy:js', 'uglify:js']
+        tasks: ['copy', 'uglify']
       },
       test: {
         files: [sources, specs],
