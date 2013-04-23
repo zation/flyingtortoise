@@ -115,7 +115,7 @@ module.exports = function(grunt) {
     },
 
     jshint: {
-      test: [sources, '!app/js/helper/*']
+      test: [sources, '!app/js/helper/*', '!' + libPath + '*']
     },
 
     watch: {
