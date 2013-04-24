@@ -1,68 +1,27 @@
 function setupData() {
+  function generateRecords(name, order, times) {
+    var records = [];
+    var now = moment();
+    _.each(times, function(time, index) {
+      records.push({
+        date: now.add('days', -records.length + index).format('YYYY-MM-DD'),
+        time: time
+      });
+    });
+    return {
+      name: name,
+      order: order,
+      total: times[times.length - 1],
+      records: records
+    };
+  }
+
   localStorage.clear();
   var collection = new app.collection.Tasks();
   collection.fetch();
-  collection.create({
-    name: 'test1',
-    order: 1,
-    total: 100,
-    records: [
-      {
-        date: '2013-04-05',
-        time: 20
-      },
-      {
-        date: '2013-04-06',
-        time: 50
-      },
-      {
-        date: '2013-04-07',
-        time: 100
-      }
-    ]
-  });
-  collection.create({
-    name: 'test2',
-    order: 2,
-    total: 200,
-    records: [
-      {
-        date: '2013-04-06',
-        time: 50
-      },
-      {
-        date: '2013-04-07',
-        time: 200
-      }
-    ]
-  });
-  collection.create({
-    name: 'test3',
-    order: 3,
-    total: 400,
-    records: [
-      {
-        date: '2013-04-03',
-        time: 20
-      },
-      {
-        date: '2013-04-04',
-        time: 50
-      },
-      {
-        date: '2013-04-05',
-        time: 99
-      },
-      {
-        date: '2013-04-06',
-        time: 127
-      },
-      {
-        date: '2013-04-07',
-        time: 400
-      }
-    ]
-  });
+  collection.create(generateRecords('Painting', 1, [20, 50, 100, 300, 400]));
+  collection.create(generateRecords('Guitar', 2, [50, 200, 210, 220, 230, 300]));
+  collection.create(generateRecords('Writing', 3, [100, 150, 200, 250, 300]));
 }
 
 function clearData() {
