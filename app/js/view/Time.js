@@ -38,11 +38,11 @@ app.view.Time = Backbone.View.extend({
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.lineWidth = lineWidth;
-    context.strokeStyle = color;
 
     this._recorderTimer = null;
     this.model = model;
     this.model.start(startTime);
+
     displayTime();
 
     function displayTime(timestamp) {
@@ -67,11 +67,16 @@ app.view.Time = Backbone.View.extend({
       context.fillText(minuteDisplay + ':' + secondDisplay, centerX, centerY);
       $canvas.text(minuteDisplay + ':' + secondDisplay);
 
+      context.strokeStyle = '#343434';
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+      context.stroke();
+
+      context.strokeStyle = color;
       context.beginPath();
       context.arc(centerX, centerY, radius, - Math.PI / 2, - Math.PI / 2 + second / 30 * Math.PI, false);
       context.stroke();
-      context.closePath();
-    }  
+    }
   },
   onRotate: function(orientation) {
     if (Math.abs(orientation) === 90 && this.$el.is(':visible')) {

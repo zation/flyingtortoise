@@ -2,11 +2,13 @@ module.exports = function(grunt) {
   function handleDependencyDictionaries(dependencyDictionaries, libPath) {
     var dependencies = [], sources = [];
     for (var index in dependencyDictionaries) {
-      var dependencyDictionary = dependencyDictionaries[index];
-      var path = dependencyDictionary[0];
-      var file = dependencyDictionary[1];
-      dependencies.push(path + file);
-      sources.push(libPath + file);
+      if (dependencyDictionaries.hasOwnProperty(index)) {
+        var dependencyDictionary = dependencyDictionaries[index];
+        var path = dependencyDictionary[0];
+        var file = dependencyDictionary[1];
+        dependencies.push(path + file);
+        sources.push(libPath + file);
+      }
     }
     return {
       dependencies: dependencies,
