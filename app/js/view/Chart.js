@@ -21,13 +21,25 @@ app.view.Chart = Backbone.View.extend({
       ]
     };
 
-    this._chart.Line(data, {
-      pointDot: false,
-      scaleOverride: true,
-      scaleSteps: 5,
-      scaleStepWidth: 100,
-      scaleStartValue: 0
-    });
+    if(dataInDataSets.length === 1) {
+      this._chart.Bar(data, {
+        pointDot: false,
+        scaleOverride: true,
+        scaleSteps: 5,
+        scaleStepWidth: 20,
+        scaleStartValue: 0,
+        barValueSpacing: 200
+      });
+    }
+    else {
+      this._chart.Line(data, {
+        pointDot: false,
+        scaleOverride: true,
+        scaleSteps: 5,
+        scaleStepWidth: 100,
+        scaleStartValue: 0
+      });
+    }
   },
   onSwitch: function(model) {
     this.model = model;

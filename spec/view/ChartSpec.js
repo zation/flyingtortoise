@@ -11,7 +11,30 @@ describe('Chart View', function() {
     });
   });
 
-  it('should append chart content when render', function() {
+  it('should append bar chart when record is one', function() {
+    var actualData;
+    spyOn(chartView._chart, 'Bar').andCallFake(function(data) {
+      actualData = data;
+    });
+
+    chartView.render();
+    expect(chartView.$el).toContain('.chart-content');
+    expect(actualData.labels[0]).toBe('04-12');
+    expect(actualData.datasets[0].data[0]).toBe(10);
+  });
+
+  it('should append line chart when records are more than one', function() {
+    chartView = new app.view.Chart({
+      model: new app.model.Task({
+        records: [{
+          date: '2008-04-12',
+          time: 10
+        }, {
+          date: '2008-04-13',
+          time: 20
+        }]
+      })
+    });
     var actualData;
     spyOn(chartView._chart, 'Line').andCallFake(function(data) {
       actualData = data;
@@ -21,6 +44,8 @@ describe('Chart View', function() {
     expect(chartView.$el).toContain('.chart-content');
     expect(actualData.labels[0]).toBe('04-12');
     expect(actualData.datasets[0].data[0]).toBe(10);
+    expect(actualData.labels[1]).toBe('04-13');
+    expect(actualData.datasets[0].data[1]).toBe(20);
   });
 
   it('should remove element when rotate to vertical', function() {
