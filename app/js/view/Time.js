@@ -64,7 +64,7 @@ app.view.Time = Backbone.View.extend({
       }
 
       context.clearRect(0, 0, $canvas.width(), $canvas.height());
-      context.fillText(minuteDisplay + ':' + secondDisplay, centerX, centerY);
+      context.fillText(minuteDisplay + ':' + secondDisplay, centerX, centerY + 15);
       $canvas.text(minuteDisplay + ':' + secondDisplay);
 
       context.strokeStyle = '#343434';

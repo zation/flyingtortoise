@@ -3,11 +3,17 @@
     .task-name {
       color: $task-color-1;
     }
+    .stop {
+      background: $task-color-1;
+    }
   }
 
   &.task-order-2 {
     .task-name {
       color: $task-color-2;
+    }
+    .stop {
+      background: $task-color-2;
     }
   }
 
@@ -15,22 +21,38 @@
     .task-name {
       color: $task-color-3;
     }
+    .stop {
+      background: $task-color-3;
+    }
   }
 
   &.task-order-4 {
     .task-name {
       color: $task-color-4;
     }
+    .stop {
+      background: $task-color-4;
+    }
   }
 
   .task-name {
-    margin:  10px auto 30px;
     font-size: 24px;
+    position: relative;
+    top: 100px;
   }
 
   .stop {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto 0;
+    border: 0;
+    border-radius: 10px;
+    line-height: 50px;
+    width: 100px;
+    color: white;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
   }
 }
 
