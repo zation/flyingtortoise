@@ -64,3 +64,7 @@ function setupData() {
     ]
   });
 }
+
+function clearData() {
+  localStorage.clear();
+}

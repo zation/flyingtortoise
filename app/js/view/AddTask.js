@@ -11,15 +11,20 @@ app.view.AddTask = Backbone.View.extend({
   tagName: 'li',
   events: {
     'click .to-add-task': 'toAddTask',
-    'submit form': 'addTask'
+    'submit form': 'addTask',
+    'focusout .new-task-name': 'addTask'
   },
   addTask: function(event) {
     event.preventDefault();
-    this.collection.create({
-      name: this.$el.find('.new-task-name').val(),
-      order: this.collection.length + 1
-    });
-    this._adjustElementDisplay();
+    var name = this.$el.find('.new-task-name').val();
+    if (name !== '') {
+      this.collection.create({
+        name: name,
+        order: this.collection.length + 1
+      });
+      this._adjustElementDisplay();
+    }
+
     this.$el.find('form').hide();
     this.$el.find('.add-task-title').show();
     this.$el.find('.add-task-markup').show();
